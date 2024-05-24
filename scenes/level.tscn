@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=4 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
+[ext_resource type="PackedScene" uid="uid://opndyfudaexl" path="res://scenes/Granate.tscn" id="2_clwrk"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x8wva"]
 
@@ -19,3 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 0.775077, 0.631867, 0, -0.631867, 0.775077, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.50644, 0.862275, 0, -0.862275, 0.50644, 0, 16.9682, 11.7942)
+
+[node name="Granatenwerfer" parent="." instance=ExtResource("2_clwrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172082, 5.30207, -6.75851)
