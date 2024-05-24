@@ -1,4 +1,4 @@
-extends CSGMesh3D
+extends MeshInstance3D
 
 var active = false
 

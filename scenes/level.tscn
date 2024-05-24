@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" uid="uid://opndyfudaexl" path="res://scenes/Granate.tscn" id="2_clwrk"]
 [ext_resource type="PackedScene" uid="uid://cxs07ihxx8pl5" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
 [ext_resource type="Script" path="res://scripts/voxels.gd" id="5_evbhl"]
+[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2pnf8"]
 frequency = 0.0023
@@ -33,9 +33,6 @@ transform = Transform3D(-0.425621, 0.780274, -0.458278, -3.70809e-09, 0.50644, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217092, 0.707905, -3.9059)
 spawnable_item = ExtResource("3_v885p")
 
-[node name="Granatenwerfer" parent="." instance=ExtResource("2_clwrk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172082, 1.95507, -6.75851)
-
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0.334469, -0.501952, -11.0486)
 generator = SubResource("VoxelGeneratorNoise_65ssa")
@@ -62,5 +59,8 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 0.0149569, 0.999888, 0, -0.999888, 0.0149569, 0, 4.09409, -11.2107)
 light_energy = 20.0
 spot_range = 20.0
+
+[node name="ItemSpawner2" parent="." instance=ExtResource("2_7j2rp")]
+spawnable_item = ExtResource("5_wivmc")
 
 [connection signal="timeout" from="VoxelLodTerrain/Timer" to="VoxelLodTerrain" method="_on_timer_timeout"]

@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://bahsid2uy1bvw"]
-
-[node name="Node3D" type="CSGTorus3D"]
-sides = 16
