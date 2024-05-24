@@ -6,6 +6,8 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export_enum("Player 1", "Player 2", "Player 3", "Player 4") var player: int = 0
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -13,12 +15,18 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("player_%d_jump" % player) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	var input_dir = Input.get_vector(	\
+		"player_%d_left" % player, 		\
+		"player_%d_right" % player, 	\
+		"player_%d_up" % player, 		\
+		"player_%d_down" % player)
+	
 	if input_dir:
 		velocity.x = input_dir.x * SPEED
 		velocity.z = input_dir.y * SPEED
