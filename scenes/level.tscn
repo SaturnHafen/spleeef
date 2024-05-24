@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" uid="uid://bj46hnc15duu3" path="res://scenes/Granate.tscn" id="2_clwrk"]
-[ext_resource type="PackedScene" uid="uid://cxs07ihxx8pl5" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
+[ext_resource type="PackedScene" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
+[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_yiprw"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x8wva"]
 
@@ -27,5 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 0.50644, 0.862275, 0, -0.862275, 0.50644, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217092, 0.707905, -3.9059)
 spawnable_item = ExtResource("3_v885p")
 
-[node name="Granatenwerfer" parent="." instance=ExtResource("2_clwrk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172082, 5.30207, -6.75851)
+[node name="ItemSpawner2" parent="." instance=ExtResource("2_7j2rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.33749, 0, -5.57254)
+spawnable_item = ExtResource("5_yiprw")
