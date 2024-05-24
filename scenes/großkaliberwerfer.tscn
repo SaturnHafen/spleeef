@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx85uvy6y4qwm"]
+
+[ext_resource type="Script" path="res://scripts/großkaliberwerfer.gd" id="1_7hwic"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_5ixkw"]
+
+[node name="Großkaliberwerfer" type="Node3D"]
+transform = Transform3D(0.998841, 0, 0, 0, 0.998841, 0, 0, 0, 0.998841, 0, 0, 0)
+script = ExtResource("1_7hwic")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("PrismMesh_5ixkw")
