@@ -19,4 +19,5 @@ mesh = SubResource("CapsuleMesh_ex6yh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72816, 0.303267, 0)
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="Hand" type="Node3D" parent="."]
+[node name="Hand" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.571574)

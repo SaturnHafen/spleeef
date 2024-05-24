@@ -8,6 +8,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export_enum("Player 1", "Player 2", "Player 3", "Player 4") var player: int = 0
 
+func _process(delta):
+	if Input.is_action_just_pressed("player_%d_action" % player):
+		var item = $Hand.get_child(0)
+		if item:
+			item.shoot()
 
 func _physics_process(delta):
 	# Add the gravity.
