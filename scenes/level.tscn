@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
-[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_yiprw"]
+[ext_resource type="PackedScene" uid="uid://cxs07ihxx8pl5" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
+[ext_resource type="PackedScene" path="res://scenes/großkaliberwerfer.tscn" id="5_yiprw"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x8wva"]
 
