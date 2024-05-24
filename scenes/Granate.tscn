@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://opndyfudaexl"]
+[gd_scene load_steps=4 format=3 uid="uid://opndyfudaexl"]
+
+[ext_resource type="Script" path="res://scripts/granate.gd" id="1_e25je"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2gg4d"]
 friction = 0.66
@@ -9,11 +11,19 @@ bounce = 4.0
 [node name="granate" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(0.257029, 0, 0, 0, 0.257029, 0, 0, 0, 0.257029, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_2gg4d")
+script = ExtResource("1_e25je")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("SphereShape3D_jhfa2")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D"]
-transform = Transform3D(0.99016, 0, 0, 0, 0.99016, 0, 0, 0, 0.99016, 0, 0, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="RigidBody3D"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="RigidBody3D/Timer" to="RigidBody3D" method="on_timer_timeout"]
