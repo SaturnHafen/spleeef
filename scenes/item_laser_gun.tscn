@@ -6,7 +6,7 @@
 [sub_resource type="PrismMesh" id="PrismMesh_i3288"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="LaserGun" type="CSGMesh3D"]
+[node name="LaserGun" type="MeshInstance3D"]
 mesh = SubResource("PrismMesh_i3288")
 script = ExtResource("1_84xvm")
 projectile = ExtResource("2_m6mnt")
