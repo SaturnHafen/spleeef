@@ -35,10 +35,9 @@ func _physics_process(delta):
 	if input_dir:
 		velocity.x = input_dir.x * SPEED
 		velocity.z = input_dir.y * SPEED
+		rotation.y = -atan2(input_dir.y, input_dir.x)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.y, 0, SPEED)
-	
-	rotation.y = -atan2(input_dir.y, input_dir.x)
 
 	move_and_slide()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=6 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
+[ext_resource type="PackedScene" uid="uid://bj46hnc15duu3" path="res://scenes/Granate.tscn" id="2_clwrk"]
 [ext_resource type="PackedScene" uid="uid://cxs07ihxx8pl5" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x8wva"]
@@ -17,7 +18,7 @@ shape = SubResource("WorldBoundaryShape3D_x8wva")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6246, 0, -7.28354)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.775077, 0.631867, 0, -0.631867, 0.775077, 0, 4.19453, 2.69448)
+transform = Transform3D(1, 0, 0, 0, 0.775077, 0.631867, 0, -0.631867, 0.775077, 0, 4.19453, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.50644, 0.862275, 0, -0.862275, 0.50644, 0, 16.9682, 11.7942)
@@ -25,3 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 0.50644, 0.862275, 0, -0.862275, 0.50644, 0,
 [node name="ItemSpawner" parent="." instance=ExtResource("2_7j2rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217092, 0.707905, -3.9059)
 spawnable_item = ExtResource("3_v885p")
+
+[node name="Granatenwerfer" parent="." instance=ExtResource("2_clwrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172082, 5.30207, -6.75851)
