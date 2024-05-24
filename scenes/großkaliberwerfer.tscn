@@ -10,3 +10,8 @@ script = ExtResource("1_7hwic")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 mesh = SubResource("PrismMesh_5ixkw")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
