@@ -7,14 +7,58 @@
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pnf8"]
-frequency = 0.0023
-offset = Vector3(0, 605.26, 0)
-
-[sub_resource type="VoxelGeneratorNoise" id="VoxelGeneratorNoise_65ssa"]
-noise = SubResource("FastNoiseLite_2pnf8")
-height_start = -50.0
-height_range = 100.0
+[sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
+graph_data = {
+"connections": [[15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [14, 0, 12, 0], [1, 0, 7, 0]],
+"nodes": {
+"1": {
+"gui_position": Vector2(330, 160),
+"type": "InputX"
+},
+"10": {
+"gui_position": Vector2(270, 280),
+"type": "Constant",
+"value": 0.0
+},
+"12": {
+"gui_position": Vector2(420, 60),
+"type": "Abs"
+},
+"13": {
+"b": 20.0,
+"gui_position": Vector2(570, 80),
+"type": "Subtract"
+},
+"14": {
+"gui_position": Vector2(320, 60),
+"type": "InputY"
+},
+"15": {
+"gui_position": Vector2(710, 110),
+"type": "Max"
+},
+"3": {
+"gui_position": Vector2(330, 220),
+"type": "InputZ"
+},
+"4": {
+"auto_connect": true,
+"gui_position": Vector2(850, 160),
+"type": "OutputSDF"
+},
+"7": {
+"auto_connect": true,
+"gui_position": Vector2(430, 170),
+"type": "Distance2D"
+},
+"8": {
+"b": 100.0,
+"gui_position": Vector2(580, 170),
+"type": "Subtract"
+}
+},
+"version": 2
+}
 
 [sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_r0c7e"]
 mesh_optimization_enabled = true
@@ -51,7 +95,7 @@ spawnable_item = ExtResource("5_opt2s")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0.334469, -0.501952, -11.0486)
-generator = SubResource("VoxelGeneratorNoise_65ssa")
+generator = SubResource("VoxelGeneratorGraph_babyf")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
 voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
 lod_distance = 128.0
