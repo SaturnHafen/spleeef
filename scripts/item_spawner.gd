@@ -34,20 +34,22 @@ func _on_respawn_timer_timeout():
 		disabled = false
 
 func _on_body_entered(body):
-	if body.is_in_group("player") and not disabled:
+	if not disabled and body.is_in_group("player"):
 		# give the player the item
-		var current_item = $Item.get_children()[0]
-		$Item.remove_child(current_item)
 		
-		var hand: Node3D = body.get_node("Hand")
-		
-		for child in hand.get_children():
-			child.queue_free()
-		
-		hand.add_child(current_item)
-		
-		current_item.player = body
-		
-		$RespawnTimer.start()
-		$Light.visible = false
-		disabled = true
+		if body.get_node("Mainhand").get_child_count() == 0:
+			give_item_to(body, body.get_node("Mainhand"))
+			
+		elif body.get_node("Offhand").get_child_count() == 0:
+			give_item_to(body, body.get_node("Offhand"))
+
+func give_item_to(body: Node3D, target: Node3D):
+	var current_item = $Item.get_children()[0]
+	$Item.remove_child(current_item)
+	
+	target.add_child(current_item)
+	current_item.player = body
+	
+	$RespawnTimer.start()
+	$Light.visible = false
+	disabled = true
