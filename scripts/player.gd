@@ -3,6 +3,8 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+const ACCELERATION: float = 10
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -61,12 +63,13 @@ func _physics_process(delta):
 	$Hand.rotation_degrees.z = hand_rotation
 	
 	if input_dir:
-		velocity.x = input_dir.x * SPEED
-		velocity.z = input_dir.y * SPEED
+		velocity.x = move_toward(velocity.x, input_dir.x * SPEED, delta * ACCELERATION)
+		velocity.z = move_toward(velocity.z, input_dir.y * SPEED, delta * ACCELERATION)
+		#velocity.z = input_dir.y * SPEED
 		#rotation.y = -atan2(input_dir.y, input_dir.x)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.y, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, delta * ACCELERATION)
+		velocity.z = move_toward(velocity.y, 0, delta * ACCELERATION)
 	
 	velocity += knockback
 	knockback = Vector3.ZERO
