@@ -24,7 +24,7 @@ func shoot():
 		$Cooldown.start()
 		var item: RigidBody3D = shoot_item.instantiate()
 		var direction = global_transform.basis.x
-		item.apply_central_force(direction * speed)
+		item.add_constant_central_force(direction * speed)
 		projectile_root.add_child(item)
 		item.global_position = global_position + direction * offset
 		active = false
