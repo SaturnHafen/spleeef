@@ -1,10 +1,11 @@
 extends Node3D
 const speed = 2000
 const offset = 1
+var active = false
 
 var projectile_root: Node3D
 
-var active = false
+
 @export var projectiles: PackedScene
 
 func shoot():
@@ -17,7 +18,7 @@ func shoot():
 		
 		
 		var direction = global_transform.basis.x
-		projectile.apply_central_force(direction * speed)
+		projectile.add_constant_central_force(direction * speed)
 		projectile_root.add_child(projectile)
 		projectile.global_position = global_position + direction * offset
 
