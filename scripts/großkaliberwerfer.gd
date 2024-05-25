@@ -1,5 +1,5 @@
 extends Node3D
-var speed = 50
+var speed = 75
 var active = true
 
 @export var shoot_item: PackedScene
@@ -19,16 +19,18 @@ func shoot():
 	if active:
 		$Cooldown.start()
 		var item: RigidBody3D = shoot_item.instantiate()
-		var richtung = global_rotation
-		item.apply_central_force(richtung * speed)
-		item.position = position
+		
 		$shoot_item.add_child(item)
 		
 		var vec = Vector3(5, 5, 0)
 		#item.apply_central_force(richtung*speed)
-		item.add_constant_central_force(vec)
+		#item.add_constant_central_force(vec)
 		active = false
-	
+		var richtung = global_rotation
+		item.position = position
+		item.apply_central_force(richtung * speed)
+		
+		
 
 
 func _on_cooldown_timeout():
