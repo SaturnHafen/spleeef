@@ -1,4 +1,4 @@
 extends Node3D
 
-var active = flase
+var active = false
 @export var projectile: PackedScene

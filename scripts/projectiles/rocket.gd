@@ -1,16 +1,15 @@
 extends RigidBody3D
 
+@export var explosion: PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func explode():
+	var exp = explosion.instantiate()
+	get_parent().add_child(exp)
+	queue_free()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-# bei collision mit boden was machen
 func _on_body_entered(body):
-	pass # Replace with function body.
+	print("pew")
+	explode()
+
+func _on_timer_timeout():
+	explode()

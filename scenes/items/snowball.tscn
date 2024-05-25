@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://mgvpslyfn6a8"]
+[gd_scene load_steps=5 format=3 uid="uid://mgvpslyfn6a8"]
 
 [ext_resource type="Script" path="res://scripts/items/snowball.gd" id="1_njgf0"]
-[ext_resource type="PackedScene" uid="uid://bv5q78m260jbr" path="res://assets/snowball.glb" id="2_1w7lp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bplo8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krchp"]
+albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_p3xsh"]
+material = SubResource("StandardMaterial3D_krchp")
 
 [node name="Snowball" type="RigidBody3D" groups=["snowball"]]
 collision_layer = 0
@@ -15,11 +20,11 @@ script = ExtResource("1_njgf0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bplo8")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_p3xsh")
+
 [node name="Fuse" type="Timer" parent="."]
 one_shot = true
-
-[node name="snowball" parent="." instance=ExtResource("2_1w7lp")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.530545, 0.00366199)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]

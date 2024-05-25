@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds50rurer35xb"]
+[gd_scene load_steps=5 format=3 uid="uid://ds50rurer35xb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nlncl"]
+[ext_resource type="PackedScene" path="res://scenes/items/default_gun.tscn" id="2_lsnme"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nc74m"]
 
@@ -21,6 +22,8 @@ size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Mainhand" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+
+[node name="DefaultGun" parent="Mainhand" instance=ExtResource("2_lsnme")]
 
 [node name="Offhand" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.6)
