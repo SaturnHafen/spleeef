@@ -7,6 +7,8 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export_enum("Player 1", "Player 2", "Player 3", "Player 4") var player: int = 0
+@export var aim_speed: Vector2 = Vector2(0.1, 5)
+
 
 var knockback: Vector3 = Vector3.ZERO
 
@@ -36,16 +38,32 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	var input_dir = Input.get_vector(	\
-		"player_%d_left" % player, 		\
-		"player_%d_right" % player, 	\
-		"player_%d_up" % player, 		\
+	var input_dir = Input.get_vector(
+		"player_%d_left" % player, 
+		"player_%d_right" % player, 
+		"player_%d_up" % player, 
 		"player_%d_down" % player)
+		
+	var aim_dir = Input.get_vector(
+		"player_%d_aim_left" % player, 
+		"player_%d_aim_right" % player, 
+		"player_%d_aim_up" % player, 
+		"player_%d_aim_down" % player)
+		
+	rotation.y += aim_dir.x * aim_speed.x
+	var hand_rotation = $Hand.rotation_degrees.z - aim_dir.y * aim_speed.y
+	
+	if hand_rotation < -90:
+		hand_rotation = -90
+	if hand_rotation > 90:
+		hand_rotation = 90
+	
+	$Hand.rotation_degrees.z = hand_rotation
 	
 	if input_dir:
 		velocity.x = input_dir.x * SPEED
 		velocity.z = input_dir.y * SPEED
-		rotation.y = -atan2(input_dir.y, input_dir.x)
+		#rotation.y = -atan2(input_dir.y, input_dir.x)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.y, 0, SPEED)
