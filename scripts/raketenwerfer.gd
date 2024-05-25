@@ -5,7 +5,7 @@ var active = true
 
 
 @export var shoot_item: PackedScene
-@export var uses:int=1
+@export var uses:int = 1
 
 var projectile_root: Node3D
 var player: Node3D

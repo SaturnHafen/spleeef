@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://de3qda5bsv0xr"]
 
-[ext_resource type="Script" path="res://scenes/raketenwerfer.gd" id="1_idk0g"]
+[ext_resource type="Script" path="res://scripts/raketenwerfer.gd" id="1_idk0g"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_5ixkw"]
 
