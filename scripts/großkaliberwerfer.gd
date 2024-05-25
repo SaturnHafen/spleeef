@@ -16,13 +16,12 @@ func _process(delta):
 
 func shoot(): 
 	if active:
-		print("pew pew")
 		$Cooldown.start()
-		var shoot_item: RigidBody3D = shoot_item.instantiate()
+		var item: RigidBody3D = shoot_item.instantiate()
 		var richtung = global_rotation
-		shoot_item.apply_central_force(richtung*speed)
-		shoot_item.position = position
-		shoot_item
+		item.apply_central_force(richtung * speed)
+		item.position = position
+		$shoot_item.add_child(item)
 		
 		var vec = Vector3(5, 5, 0)
 		#item.apply_central_force(richtung*speed)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" uid="uid://cxs07ihxx8pl5" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
+[ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
 [ext_resource type="Script" path="res://scripts/voxels.gd" id="5_evbhl"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
