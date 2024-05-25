@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0kston1xdyn3"]
+
+[ext_resource type="Script" path="res://scripts/Rakete.gd" id="1_us560"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2gg4d"]
+friction = 0.66
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jhfa2"]
+
+[node name="rakete" type="RigidBody3D"]
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_2gg4d")
+gravity_scale = 4.0
+script = ExtResource("1_us560")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_jhfa2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

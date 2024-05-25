@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://de3qda5bsv0xr"]
+
+[ext_resource type="Script" path="res://scripts/großkaliberwerfer.gd" id="1_u3jmf"]
+[ext_resource type="PackedScene" uid="uid://c0kston1xdyn3" path="res://scenes/Rakete.tscn" id="2_eys47"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_5ixkw"]
+
+[node name="raketenwerfer" type="Node3D"]
+transform = Transform3D(0.998841, 0, 0, 0, 0.998841, 0, 0, 0, 0.998841, 0, 0, 0)
+script = ExtResource("1_u3jmf")
+shoot_item = ExtResource("2_eys47")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("PrismMesh_5ixkw")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Rakete" type="Node3D" parent="."]

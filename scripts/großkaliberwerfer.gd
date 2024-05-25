@@ -19,13 +19,12 @@ func shoot():
 	if active:
 		$Cooldown.start()
 		var item: RigidBody3D = shoot_item.instantiate()
-		
 		$shoot_item.add_child(item)
-		
-		var vec = Vector3(5, 5, 0)
+		#var vec = Vector3(5, 5, 0)
 		#item.apply_central_force(richtung*speed)
 		#item.add_constant_central_force(vec)
 		active = false
+		
 		var richtung = global_rotation
 		item.position = position
 		item.apply_central_force(richtung * speed)
