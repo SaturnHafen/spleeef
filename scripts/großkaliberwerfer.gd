@@ -5,6 +5,7 @@ var active = true
 @export var shoot_item: PackedScene
 
 var projectile_root: Node3D
+var player: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

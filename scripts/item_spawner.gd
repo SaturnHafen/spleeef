@@ -46,6 +46,8 @@ func _on_body_entered(body):
 		
 		hand.add_child(current_item)
 		
+		current_item.player = body
+		
 		$RespawnTimer.start()
 		$Light.visible = false
 		disabled = true

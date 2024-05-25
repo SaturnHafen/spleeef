@@ -5,6 +5,7 @@ var active = false
 @export var projectile: PackedScene
 
 var projectile_root: Node3D
+var player: Node3D
 
 func shoot():
 	if active:

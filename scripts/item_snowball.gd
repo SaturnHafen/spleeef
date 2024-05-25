@@ -4,6 +4,8 @@ var projectile_root: Node3D
 var just_shot = false
 var direction: Vector3
 
+var player: Node3D
+
 @export var force_multiplier: float = 40
 
 func shoot():
