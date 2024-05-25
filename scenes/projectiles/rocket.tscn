@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0kston1xdyn3"]
+[gd_scene load_steps=5 format=3 uid="uid://c0kston1xdyn3"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/rocket.gd" id="1_us560"]
 [ext_resource type="PackedScene" uid="uid://c2y757yu67x7u" path="res://scenes/explosion.tscn" id="2_jxdc1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jhfa2"]
 
-[node name="rakete" type="RigidBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ueq32"]
+
+[node name="Rocket" type="RigidBody3D"]
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
@@ -23,6 +25,11 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="KnockbackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KnockbackArea"]
+shape = SubResource("SphereShape3D_ueq32")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
