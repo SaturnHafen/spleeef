@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=14 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
+[ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
 [ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
@@ -64,8 +65,20 @@ graph_data = {
 [sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_r0c7e"]
 mesh_optimization_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1epe"]
-albedo_color = Color(0.132979, 0.259144, 0.147662, 1)
+[sub_resource type="Gradient" id="Gradient_tg2aw"]
+offsets = PackedFloat32Array(0, 0.396934, 1)
+colors = PackedColorArray(0.661437, 0.115464, 0.315898, 1, 0.574982, 0.495975, 0.182131, 1, 0.197994, 0.3764, 0.199275, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xjgf"]
+gradient = SubResource("Gradient_tg2aw")
+height = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c18we"]
+render_priority = 0
+shader = ExtResource("6_7maba")
+shader_parameter/u_transition_mask = null
+shader_parameter/u_block_local_transform = null
+shader_parameter/color_ramp = SubResource("GradientTexture2D_4xjgf")
 
 [node name="Node3D" type="Node3D"]
 
@@ -77,7 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81233, 1.40805, 1.7417)
 player = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.425621, 0.780274, -0.458278, -3.70809e-09, 0.50644, 0.862275, 0.904901, 0.367003, -0.215552, 0, 14.4751, 11.7942)
+transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
 
 [node name="ItemSpawner" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
@@ -100,7 +113,7 @@ generator = SubResource("VoxelGeneratorGraph_babyf")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
 voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
 lod_distance = 128.0
-material = SubResource("StandardMaterial3D_v1epe")
+material = SubResource("ShaderMaterial_c18we")
 mesh_block_size = 32
 full_load_mode_enabled = true
 threaded_update_enabled = true
@@ -108,11 +121,6 @@ script = ExtResource("4_ibc45")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="VoxelLodTerrain"]
 view_distance = 512
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0149569, 0.999888, 0, -0.999888, 0.0149569, 0, 4.09409, -11.2107)
-light_energy = 20.0
-spot_range = 20.0
 
 [node name="ProjectileRoot" type="Marker3D" parent="."]
 
