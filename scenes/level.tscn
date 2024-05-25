@@ -101,6 +101,8 @@ voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
 lod_distance = 128.0
 material = SubResource("StandardMaterial3D_v1epe")
 mesh_block_size = 32
+full_load_mode_enabled = true
+threaded_update_enabled = true
 script = ExtResource("4_ibc45")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="VoxelLodTerrain"]
