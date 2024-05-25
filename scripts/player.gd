@@ -25,10 +25,15 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 ) var player: int = 0
 @export var aim_speed: Vector2 = Vector2(0.07, 4)
 
+#nur für default gun
+@export var projectile_root: Marker3D
 
 var knockback: Vector3 = Vector3.ZERO
 
 var jumped = false
+
+func _ready():
+	$Mainhand/DefaultGun.projectile_root = projectile_root
 
 func die():
 	queue_free()
