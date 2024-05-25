@@ -83,12 +83,36 @@ shader_parameter/color_ramp = SubResource("GradientTexture2D_4xjgf")
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_x5xcl")]
+[node name="Player1" parent="." instance=ExtResource("1_x5xcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03607, 1.61319, -2.31753)
 
 [node name="Player2" parent="." instance=ExtResource("1_x5xcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81233, 1.40805, 1.7417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06794, 1.40805, 6.57842)
 player = 1
+
+[node name="Player3" parent="." instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73132, 1.40805, 1.90509)
+player = 2
+
+[node name="Player4" parent="." instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01371, 1.40805, 8.62085)
+player = 3
+
+[node name="Player5" parent="." instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56012, 1.40805, -2.49122)
+player = 4
+
+[node name="Player6" parent="." instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73477, 1.40805, 1.75836)
+player = 5
+
+[node name="Player7" parent="." instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18804, 1.40805, 2.57812)
+player = 6
+
+[node name="Player8" parent="." instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06891, 1.40805, 6.11133)
+player = 7
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)

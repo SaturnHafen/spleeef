@@ -11,7 +11,16 @@ var aim_direction_index = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@export_enum("Player 1", "Player 2", "Player 3", "Player 4") var player: int = 0
+@export_enum(
+	"Player 1",
+	"Player 2",
+	"Player 3",
+	"Player 4",
+	"Player 5",
+	"Player 6",
+	"Player 7",
+	"Player 8",
+) var player: int = 0
 @export var aim_speed: Vector2 = Vector2(0.07, 4)
 
 
