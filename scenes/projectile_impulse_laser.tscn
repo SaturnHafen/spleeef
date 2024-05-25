@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://cc2ijaan114un"]
+
+[ext_resource type="Script" path="res://scripts/projectile_laser.gd" id="1_c4iug"]
+[ext_resource type="VoxelGeneratorGraph" uid="uid://cv3xw8omtjfs0" path="res://resources/sdfs/noisy_sphere.tres" id="2_o1n44"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_57plm"]
+height = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t76no"]
+albedo_color = Color(1, 0.4, 0.231373, 0.27451)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ipq3o"]
+material = SubResource("StandardMaterial3D_t76no")
+height = 50.0
+
+[sub_resource type="Animation" id="Animation_ckna3"]
+resource_name = "shoot"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_do_destruction"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 0, 0), Vector3(1, 0, 0), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 0, 0), Vector3(1, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adxg6"]
+_data = {
+"shoot": SubResource("Animation_ckna3")
+}
+
+[node name="Laser" type="Area3D"]
+script = ExtResource("1_c4iug")
+graph = ExtResource("2_o1n44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 25, 0, 0)
+shape = SubResource("CylinderShape3D_57plm")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 25, 0, 0)
+mesh = SubResource("CylinderMesh_ipq3o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_adxg6")
+}
+autoplay = "shoot"
