@@ -5,6 +5,9 @@ const JUMP_VELOCITY = 4.5
 
 const ACCELERATION: float = 20
 
+const aim_directions = [-45, -30, 0, 15, 30, 45]
+var aim_direction_index = 1
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -43,30 +46,28 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector(
 		"player_%d_left" % player, 
 		"player_%d_right" % player, 
-		"player_%d_up" % player, 
-		"player_%d_down" % player)
+		"player_%d_forward" % player, 
+		"player_%d_back" % player)
 		
 	var aim_dir = Input.get_vector(
 		"player_%d_aim_left" % player, 
 		"player_%d_aim_right" % player, 
-		"player_%d_aim_up" % player, 
-		"player_%d_aim_down" % player)
-		
-	rotation.y += aim_dir.x * aim_speed.x
-	var hand_rotation = $Hand.rotation_degrees.z - aim_dir.y * aim_speed.y
+		"player_%d_aim_forward" % player, 
+		"player_%d_aim_back" % player)
 	
-	if hand_rotation < -90:
-		hand_rotation = -90
-	if hand_rotation > 90:
-		hand_rotation = 90
+	if aim_dir:
+		rotation.y = -aim_dir.angle()
 	
-	$Hand.rotation_degrees.z = hand_rotation
+	if Input.is_action_just_pressed("player_%d_aim_up" % player) and aim_direction_index < len(aim_directions) - 1:
+		aim_direction_index += 1
+	if Input.is_action_just_pressed("player_%d_aim_down" % player) and aim_direction_index > 0:
+		aim_direction_index -= 1
+	
+	$Hand.rotation_degrees.z = aim_directions[aim_direction_index]
 	
 	if input_dir:
 		velocity.x = move_toward(velocity.x, input_dir.x * SPEED, delta * ACCELERATION)
 		velocity.z = move_toward(velocity.z, input_dir.y * SPEED, delta * ACCELERATION)
-		#velocity.z = input_dir.y * SPEED
-		#rotation.y = -atan2(input_dir.y, input_dir.x)
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * ACCELERATION)
 		velocity.z = move_toward(velocity.y, 0, delta * ACCELERATION)
