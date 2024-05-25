@@ -1,0 +1,73 @@
+[gd_resource type="VoxelGeneratorGraph" format=3 uid="uid://djkd783wnec4m"]
+
+[resource]
+graph_data = {
+"connections": [[21, 0, 13, 1], [9, 0, 8, 1], [8, 0, 21, 0], [1, 0, 7, 0], [14, 0, 13, 0], [10, 0, 15, 0], [11, 0, 10, 2], [11, 0, 10, 3], [13, 0, 4, 0], [15, 0, 21, 1], [2, 0, 10, 0], [16, 0, 15, 1], [3, 0, 10, 1], [7, 0, 8, 0]],
+"nodes": {
+"1": {
+"gui_position": Vector2(510, 50),
+"type": "InputX"
+},
+"10": {
+"auto_connect": true,
+"gui_position": Vector2(580, 170),
+"type": "Distance2D"
+},
+"11": {
+"gui_position": Vector2(450, 280),
+"type": "Constant",
+"value": 0.0
+},
+"13": {
+"gui_position": Vector2(970, 50),
+"smoothness": 0.0,
+"type": "SdfSmoothSubtract"
+},
+"14": {
+"gui_position": Vector2(880, 30),
+"type": "InputSDF"
+},
+"15": {
+"gui_position": Vector2(720, 150),
+"type": "Subtract"
+},
+"16": {
+"gui_position": Vector2(550, 320),
+"name": &"Radius",
+"type": "Constant",
+"value": 2.5
+},
+"2": {
+"gui_position": Vector2(460, 160),
+"type": "InputY"
+},
+"21": {
+"gui_position": Vector2(840, 100),
+"type": "Max"
+},
+"3": {
+"gui_position": Vector2(460, 220),
+"type": "InputZ"
+},
+"4": {
+"auto_connect": true,
+"gui_position": Vector2(1130, 50),
+"type": "OutputSDF"
+},
+"7": {
+"gui_position": Vector2(590, 50),
+"type": "Abs"
+},
+"8": {
+"gui_position": Vector2(720, 50),
+"type": "Subtract"
+},
+"9": {
+"gui_position": Vector2(530, 110),
+"name": &"Length/2",
+"type": "Constant",
+"value": 50.0
+}
+},
+"version": 2
+}
