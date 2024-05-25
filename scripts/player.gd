@@ -8,6 +8,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export_enum("Player 1", "Player 2", "Player 3", "Player 4") var player: int = 0
 
+var knockback: Vector3 = Vector3.ZERO
+
 func _process(delta):
 	if Input.is_action_just_pressed("player_%d_action" % player):
 		if len($Hand.get_children()) > 0:
@@ -39,5 +41,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.y, 0, SPEED)
-
+	
+	velocity += knockback
+	
 	move_and_slide()
