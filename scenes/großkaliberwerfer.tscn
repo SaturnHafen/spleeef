@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx85uvy6y4qwm"]
+[gd_scene load_steps=4 format=3 uid="uid://cx85uvy6y4qwm"]
 
 [ext_resource type="Script" path="res://scripts/großkaliberwerfer.gd" id="1_7hwic"]
+[ext_resource type="PackedScene" uid="uid://opndyfudaexl" path="res://scenes/Granate.tscn" id="2_wo1uk"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_5ixkw"]
 
 [node name="Großkaliberwerfer" type="Node3D"]
 transform = Transform3D(0.998841, 0, 0, 0, 0.998841, 0, 0, 0, 0.998841, 0, 0, 0)
 script = ExtResource("1_7hwic")
+shoot_item = ExtResource("2_wo1uk")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 mesh = SubResource("PrismMesh_5ixkw")
@@ -15,3 +17,5 @@ mesh = SubResource("PrismMesh_5ixkw")
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

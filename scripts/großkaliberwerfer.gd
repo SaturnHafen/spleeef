@@ -4,6 +4,8 @@ var active = false
 
 @export var shoot_item: PackedScene
 
+var projectile_root: Node3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,14 +17,17 @@ func _process(delta):
 
 func shoot(): 
 	if active:
+		print("pew pew")
 		$Cooldown.start()
-		var shoot_item:RigidBody3D = shoot_item.instantiate()
+		var shoot_item: RigidBody3D = shoot_item.instantiate()
 		var richtung = global_rotation
 		shoot_item.apply_central_force(richtung*speed)
+		shoot_item.position = position
+		shoot_item
 		
 		
 	
 
 
-func _on_Cooldown_timeout():
+func _on_cooldown_timeout():
 	active = true
