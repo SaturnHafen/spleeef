@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 4.5
 const ACCELERATION: float = 20
 
 const aim_directions = [-45, -30, 0, 15, 30, 45]
-var aim_direction_index = 1
+var aim_direction_index = 2
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
