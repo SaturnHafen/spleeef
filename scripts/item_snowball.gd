@@ -7,6 +7,7 @@ var direction: Vector3
 var player: Node3D
 
 @export var force_multiplier: float = 40
+@export var knockback: float = 5.0
 
 func shoot():
 	just_shot = true
@@ -23,9 +24,14 @@ func shoot():
 func _integrate_forces(state):
 	if just_shot:
 		just_shot = false
-		
 		apply_central_impulse((direction + Vector3.UP * 0.1) * force_multiplier)
-
 
 func _on_fuse_timeout():
 	queue_free()
+
+func _on_body_entered(body: Node3D):
+	if body.is_in_group("player") and not body == player:
+		var collision_direction = (body.position - position) * Vector3(1, 0, 1)
+		body.knockback = collision_direction * knockback
+		print(collision_direction)
+

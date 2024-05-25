@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 
 
-func shoot(): 
+func shoot():
 	if active:
 		$Cooldown.start()
 		var item: RigidBody3D = shoot_item.instantiate()

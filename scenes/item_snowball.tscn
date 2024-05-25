@@ -10,10 +10,11 @@ albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_p3xsh"]
 material = SubResource("StandardMaterial3D_krchp")
 
-[node name="Snowball" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 0
+[node name="Snowball" type="RigidBody3D" groups=["snowball"]]
+collision_layer = 0
 freeze = true
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_6e0au")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,4 +26,5 @@ mesh = SubResource("SphereMesh_p3xsh")
 [node name="Fuse" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
