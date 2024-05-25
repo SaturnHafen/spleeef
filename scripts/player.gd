@@ -8,6 +8,8 @@ const ACCELERATION: float = 20
 const aim_directions = [-45, -30, 0, 15, 30, 45]
 var aim_direction_index = 2
 
+signal death
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -27,6 +29,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var knockback: Vector3 = Vector3.ZERO
 
 var jumped = false
+
+func die():
+	queue_free()
+	remove_from_group("player")
+	death.emit()
 
 func _process(delta):
 	if Input.is_action_just_pressed("player_%d_action" % player):
