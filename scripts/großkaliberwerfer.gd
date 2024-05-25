@@ -3,7 +3,9 @@ const speed = 1000
 const offset = 1
 var active = true
 
+
 @export var shoot_item: PackedScene
+@export var uses:int=1
 
 var projectile_root: Node3D
 var player: Node3D
@@ -18,6 +20,7 @@ func _process(delta):
 
 func shoot():
 	if active:
+		#spawn and shoot raket
 		$Cooldown.start()
 		var item: RigidBody3D = shoot_item.instantiate()
 		var direction = global_transform.basis.x
@@ -25,6 +28,12 @@ func shoot():
 		projectile_root.add_child(item)
 		item.global_position = global_position + direction * offset
 		active = false
+		
+		#reduce muni
+		uses = uses -1
+		if uses <= 0:
+			queue_free() 
+		
 
 func _on_cooldown_timeout():
 	active = true
