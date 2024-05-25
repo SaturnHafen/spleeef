@@ -3,13 +3,13 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-const ACCELERATION: float = 10
+const ACCELERATION: float = 20
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export_enum("Player 1", "Player 2", "Player 3", "Player 4") var player: int = 0
-@export var aim_speed: Vector2 = Vector2(0.1, 5)
+@export var aim_speed: Vector2 = Vector2(0.07, 4)
 
 
 var knockback: Vector3 = Vector3.ZERO

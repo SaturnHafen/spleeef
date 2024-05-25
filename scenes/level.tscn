@@ -66,8 +66,9 @@ graph_data = {
 mesh_optimization_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_tg2aw"]
-offsets = PackedFloat32Array(0, 0.396934, 1)
-colors = PackedColorArray(0.661437, 0.115464, 0.315898, 1, 0.574982, 0.495975, 0.182131, 1, 0.197994, 0.3764, 0.199275, 1)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0681431, 0.277683, 0.507666, 0.71891, 1)
+colors = PackedColorArray(0.635102, 0.0425496, 0.104968, 1, 0.598153, 0.333769, 0.897796, 1, 0.135917, 0.416313, 0.595319, 1, 0.119364, 0.492286, 0.443564, 1, 0.120797, 0.568037, 0.149154, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4xjgf"]
 gradient = SubResource("Gradient_tg2aw")
@@ -108,7 +109,7 @@ projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_opt2s")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0, -2, 0)
+transform = Transform3D(0.2, -1.42058e-05, 8.32889e-05, 1.41632e-05, 0.2, 0.000102256, -8.32962e-05, -0.000102251, 0.2, 0, -4, 0)
 generator = SubResource("VoxelGeneratorGraph_babyf")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
 voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
@@ -131,4 +132,4 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 current = true
 
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58039, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
