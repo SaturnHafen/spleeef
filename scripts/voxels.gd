@@ -1,10 +1,10 @@
-extends VoxelLodTerrain
+extends Node
 
-var graph = preload("res://resources/sdfs/noisy_sphere.tres");
+var terrain: VoxelLodTerrain
+var voxel_tool: VoxelToolLodTerrain
 
-@onready
-var tool = get_voxel_tool()
-
-func _on_timer_timeout():
-	tool.mode = VoxelTool.MODE_REMOVE
-	tool.do_graph(graph, Transform3D.IDENTITY, Vector3(100, 100, 100))
+func do_graph(graph: VoxelGeneratorGraph, global_pos: Vector3, size: Vector3):
+	var to_local = terrain.global_transform.affine_inverse()
+	var pos = to_local * global_pos
+	var transform = Transform3D.IDENTITY.translated(pos)
+	voxel_tool.do_graph(graph, transform, size)

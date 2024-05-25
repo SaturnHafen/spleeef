@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
 [ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
-[ext_resource type="Script" path="res://scripts/voxels.gd" id="5_evbhl"]
+[ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
 
@@ -53,19 +53,14 @@ spawnable_item = ExtResource("5_opt2s")
 transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0.334469, -0.501952, -11.0486)
 generator = SubResource("VoxelGeneratorNoise_65ssa")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
-voxel_bounds = AABB(-512, -512, -512, 1024, 1024, 1024)
+voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
+lod_distance = 128.0
 material = SubResource("StandardMaterial3D_v1epe")
 mesh_block_size = 32
-script = ExtResource("5_evbhl")
+script = ExtResource("4_ibc45")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="VoxelLodTerrain"]
-view_distance = 32
-requires_data_block_notifications = true
-
-[node name="Timer" type="Timer" parent="VoxelLodTerrain"]
-wait_time = 3.0
-one_shot = true
-autostart = true
+view_distance = 512
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0149569, 0.999888, 0, -0.999888, 0.0149569, 0, 4.09409, -11.2107)
@@ -79,5 +74,3 @@ spot_range = 20.0
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.18277, 5.32795)
 current = true
-
-[connection signal="timeout" from="VoxelLodTerrain/Timer" to="VoxelLodTerrain" method="_on_timer_timeout"]

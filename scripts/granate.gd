@@ -1,16 +1,7 @@
 extends RigidBody3D
 
+var graph = preload("res://resources/sdfs/noisy_sphere.tres");
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-#erstellter timer ruft diese fkt auf wenn er abläuft
 func on_timer_timeout():
-	pass # Replace with function body.
-	#logik kommt wenn marius die welt fertig hat
+	Voxels.do_graph(graph, global_position, Vector3(100, 100, 100))
+	queue_free()
