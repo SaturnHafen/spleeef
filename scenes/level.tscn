@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
-[ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
+[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
