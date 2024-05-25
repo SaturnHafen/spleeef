@@ -1,6 +1,6 @@
 extends Node3D
-var speed = 5
-var active = false
+var speed = 50
+var active = true
 
 @export var shoot_item: PackedScene
 
@@ -16,11 +16,14 @@ func _process(delta):
 func shoot(): 
 	if active:
 		$Cooldown.start()
-		var shoot_item:RigidBody3D = shoot_item.instantiate()
+		var item = shoot_item.instantiate()
+		$shoot_item.add_child(item)
 		var richtung = global_rotation
-		shoot_item.apply_central_force(richtung*speed)
 		
-		
+		var vec = Vector3(5, 5, 0)
+		#item.apply_central_force(richtung*speed)
+		item.add_constant_central_force(vec)
+		active = false
 	
 
 
