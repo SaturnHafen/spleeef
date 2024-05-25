@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=10 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
@@ -9,7 +9,7 @@
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [14, 0, 12, 0], [1, 0, 7, 0]],
+"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -69,10 +69,10 @@ albedo_color = Color(0.132979, 0.259144, 0.147662, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_x5xcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6246, 0, -7.28354)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03607, 1.61319, -2.31753)
 
 [node name="Player2" parent="." instance=ExtResource("1_x5xcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6246, 0, -2.97415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81233, 1.40805, 1.7417)
 player = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -94,7 +94,7 @@ projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_opt2s")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0.334469, -0.501952, -11.0486)
+transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0, -2, 0)
 generator = SubResource("VoxelGeneratorGraph_babyf")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
 voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
@@ -118,5 +118,5 @@ spot_range = 20.0
 [node name="CameraOrigin" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.18277, 5.32795)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.810937, 8.18277, 13.1158)
 current = true
