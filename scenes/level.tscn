@@ -1,19 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=21 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" uid="uid://b3gka77tfyfo2" path="res://scenes/game_over.tscn" id="2_yn6gk"]
+[ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="2_yn6gk"]
 [ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="3_v885p"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/items/snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="5_wivmc"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
-[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
+[ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
+"connections": [[1, 0, 7, 0], [10, 0, 7, 2], [10, 0, 7, 3], [12, 0, 13, 0], [13, 0, 15, 0], [14, 0, 12, 0], [15, 0, 4, 0], [3, 0, 7, 1], [7, 0, 8, 0], [8, 0, 15, 1]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -82,6 +82,27 @@ shader = ExtResource("6_7maba")
 shader_parameter/u_transition_mask = null
 shader_parameter/u_block_local_transform = null
 shader_parameter/color_ramp = SubResource("GradientTexture2D_4xjgf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_syr21"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hluem"]
+noise = SubResource("FastNoiseLite_syr21")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_berjx"]
+sky_top_color = Color(0.92145, 0.54879, 0.423175, 1)
+sky_horizon_color = Color(1, 0.67451, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_hluem")
+sky_cover_modulate = Color(0.898039, 0.615686, 0.823529, 0.760784)
+ground_bottom_color = Color(0.165402, 0.182948, 0.133593, 1)
+ground_horizon_color = Color(0.905544, 0.564814, 0.187756, 1)
+
+[sub_resource type="Sky" id="Sky_fqwg8"]
+sky_material = SubResource("ProceduralSkyMaterial_berjx")
+
+[sub_resource type="Environment" id="Environment_1fodr"]
+background_mode = 2
+sky = SubResource("Sky_fqwg8")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_1hq8d")
@@ -162,4 +183,5 @@ current = true
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
 
-[connection signal="death" from="Player2" to="." method="_on_player_death"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1fodr")
