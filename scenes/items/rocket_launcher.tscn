@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://de3qda5bsv0xr"]
+[gd_scene load_steps=4 format=3 uid="uid://de3qda5bsv0xr"]
 
 [ext_resource type="Script" path="res://scripts/items/rocket_launcher.gd" id="1_6s2ip"]
 [ext_resource type="PackedScene" uid="uid://btt7xb0i2gc8i" path="res://assets/blasterA.glb" id="2_vgowh"]
+[ext_resource type="PackedScene" uid="uid://c0kston1xdyn3" path="res://scenes/projectiles/rocket.tscn" id="2_vihj3"]
 
-[node name="raketenwerfer" type="Node3D"]
+[node name="RocketLauncher" type="Node3D"]
 transform = Transform3D(0.998841, 0, 0, 0, 0.998841, 0, 0, 0, 0.998841, 0, 0, 0)
 script = ExtResource("1_6s2ip")
+shoot_item = ExtResource("2_vihj3")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 10.0

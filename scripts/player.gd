@@ -35,11 +35,24 @@ func die():
 	remove_from_group("player")
 	death.emit()
 
+func switch_hands():
+	var main = $Mainhand.get_child(0)
+	var off = $Offhand.get_child(0)
+	
+	$Offhand.remove_child(off)
+	$Mainhand.remove_child(main)
+	
+	$Offhand.add_child(main)
+	$Mainhand.add_child(off)
+
 func _process(delta):
 	if Input.is_action_just_pressed("player_%d_action" % player):
-		if len($Hand.get_children()) > 0:
-			var item = $Hand.get_child(0)
+		if len($Mainhand.get_children()) > 0:
+			var item = $Mainhand.get_child(0)
 			item.shoot()
+
+	if Input.is_action_just_pressed("player_%d_switch" % player):
+		switch_hands()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -79,7 +92,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_%d_aim_down" % player) and aim_direction_index > 0:
 		aim_direction_index -= 1
 	
-	$Hand.rotation_degrees.z = aim_directions[aim_direction_index]
+	$Mainhand.rotation_degrees.z = aim_directions[aim_direction_index]
 	
 	if input_dir:
 		velocity.x = move_toward(velocity.x, input_dir.x * SPEED, delta * ACCELERATION)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=23 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="5_wivmc"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
 [ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
+[ext_resource type="PackedScene" uid="uid://dbys426l0s7wm" path="res://scenes/items/impulse_laser_gun.tscn" id="8_gf2ma"]
+[ext_resource type="PackedScene" uid="uid://de3qda5bsv0xr" path="res://scenes/items/rocket_launcher.tscn" id="9_gff4y"]
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
@@ -83,6 +85,27 @@ shader_parameter/u_transition_mask = null
 shader_parameter/u_block_local_transform = null
 shader_parameter/color_ramp = SubResource("GradientTexture2D_4xjgf")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_syr21"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hluem"]
+noise = SubResource("FastNoiseLite_syr21")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_berjx"]
+sky_top_color = Color(0.92145, 0.54879, 0.423175, 1)
+sky_horizon_color = Color(1, 0.67451, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_hluem")
+sky_cover_modulate = Color(0.898039, 0.615686, 0.823529, 0.760784)
+ground_bottom_color = Color(0.165402, 0.182948, 0.133593, 1)
+ground_horizon_color = Color(0.905544, 0.564814, 0.187756, 1)
+
+[sub_resource type="Sky" id="Sky_fqwg8"]
+sky_material = SubResource("ProceduralSkyMaterial_berjx")
+
+[sub_resource type="Environment" id="Environment_1fodr"]
+background_mode = 2
+sky = SubResource("Sky_fqwg8")
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_1hq8d")
 game_over = ExtResource("2_yn6gk")
@@ -136,6 +159,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_opt2s")
 
+[node name="ItemSpawner4" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
+projectile_root = NodePath("../ProjectileRoot")
+spawnable_item = ExtResource("8_gf2ma")
+
+[node name="ItemSpawner5" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
+projectile_root = NodePath("../ProjectileRoot")
+spawnable_item = ExtResource("9_gff4y")
+
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(0.2, -1.42058e-05, 8.32889e-05, 1.41632e-05, 0.2, 0.000102256, -8.32962e-05, -0.000102251, 0.2, 0, -4, 0)
 generator = SubResource("VoxelGeneratorGraph_babyf")
@@ -162,4 +194,5 @@ current = true
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
 
-[connection signal="death" from="Player2" to="." method="_on_player_death"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1fodr")
