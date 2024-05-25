@@ -12,4 +12,4 @@ func on_timer_timeout():
 	for body in collisions:
 		if body.is_in_group("player"):
 			var delta = body.position - position
-			body.knockback += delta * knockback
+			body.knockback += delta.normalized() / delta.length() * knockback

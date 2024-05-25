@@ -1,19 +1,21 @@
-[gd_scene load_steps=21 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=23 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="2_yn6gk"]
+[ext_resource type="PackedScene" uid="uid://b3gka77tfyfo2" path="res://scenes/game_over.tscn" id="2_yn6gk"]
 [ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="3_v885p"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/items/snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="5_wivmc"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
-[ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
+[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
+[ext_resource type="PackedScene" uid="uid://dbys426l0s7wm" path="res://scenes/items/impulse_laser_gun.tscn" id="8_gf2ma"]
+[ext_resource type="PackedScene" uid="uid://de3qda5bsv0xr" path="res://scenes/items/rocket_launcher.tscn" id="9_gff4y"]
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[1, 0, 7, 0], [10, 0, 7, 2], [10, 0, 7, 3], [12, 0, 13, 0], [13, 0, 15, 0], [14, 0, 12, 0], [15, 0, 4, 0], [3, 0, 7, 1], [7, 0, 8, 0], [8, 0, 15, 1]],
+"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -156,6 +158,15 @@ spawnable_item = ExtResource("5_wivmc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_opt2s")
+
+[node name="ItemSpawner4" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
+projectile_root = NodePath("../ProjectileRoot")
+spawnable_item = ExtResource("8_gf2ma")
+
+[node name="ItemSpawner5" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
+projectile_root = NodePath("../ProjectileRoot")
+spawnable_item = ExtResource("9_gff4y")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(0.2, -1.42058e-05, 8.32889e-05, 1.41632e-05, 0.2, 0.000102256, -8.32962e-05, -0.000102251, 0.2, 0, -4, 0)
