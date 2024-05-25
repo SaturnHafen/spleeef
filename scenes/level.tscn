@@ -6,15 +6,60 @@
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
+[ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pnf8"]
-frequency = 0.0023
-offset = Vector3(0, 605.26, 0)
-
-[sub_resource type="VoxelGeneratorNoise" id="VoxelGeneratorNoise_65ssa"]
-noise = SubResource("FastNoiseLite_2pnf8")
-height_start = -50.0
-height_range = 100.0
+[sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
+graph_data = {
+"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
+"nodes": {
+"1": {
+"gui_position": Vector2(330, 160),
+"type": "InputX"
+},
+"10": {
+"gui_position": Vector2(270, 280),
+"type": "Constant",
+"value": 0.0
+},
+"12": {
+"gui_position": Vector2(420, 60),
+"type": "Abs"
+},
+"13": {
+"b": 20.0,
+"gui_position": Vector2(570, 80),
+"type": "Subtract"
+},
+"14": {
+"gui_position": Vector2(320, 60),
+"type": "InputY"
+},
+"15": {
+"gui_position": Vector2(710, 110),
+"type": "Max"
+},
+"3": {
+"gui_position": Vector2(330, 220),
+"type": "InputZ"
+},
+"4": {
+"auto_connect": true,
+"gui_position": Vector2(850, 160),
+"type": "OutputSDF"
+},
+"7": {
+"auto_connect": true,
+"gui_position": Vector2(430, 170),
+"type": "Distance2D"
+},
+"8": {
+"b": 100.0,
+"gui_position": Vector2(580, 170),
+"type": "Subtract"
+}
+},
+"version": 2
+}
 
 [sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_r0c7e"]
 mesh_optimization_enabled = true
@@ -25,38 +70,40 @@ albedo_color = Color(0.132979, 0.259144, 0.147662, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_x5xcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6246, 0, -7.28354)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03607, 1.61319, -2.31753)
 
 [node name="Player2" parent="." instance=ExtResource("1_x5xcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6246, 0, -2.97415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81233, 1.40805, 1.7417)
 player = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.425621, 0.780274, -0.458278, -3.70809e-09, 0.50644, 0.862275, 0.904901, 0.367003, -0.215552, 0, 14.4751, 11.7942)
 
 [node name="ItemSpawner" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217092, 0.707905, -3.9059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("3_v885p")
 
 [node name="ItemSpawner2" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44991, 0, -4.26801)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -4)
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_wivmc")
 
 [node name="ItemSpawner3" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59317, -2.04653, -5.56499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_opt2s")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0.334469, -0.501952, -11.0486)
-generator = SubResource("VoxelGeneratorNoise_65ssa")
+transform = Transform3D(0.1, -7.10469e-06, 4.16442e-05, 7.08161e-06, 0.1, 5.11285e-05, -4.16481e-05, -5.11253e-05, 0.1, 0, -2, 0)
+generator = SubResource("VoxelGeneratorGraph_babyf")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
 voxel_bounds = AABB(-512, -256, -512, 1024, 512, 1024)
 lod_distance = 128.0
 material = SubResource("StandardMaterial3D_v1epe")
 mesh_block_size = 32
+full_load_mode_enabled = true
+threaded_update_enabled = true
 script = ExtResource("4_ibc45")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="VoxelLodTerrain"]
@@ -72,5 +119,8 @@ spot_range = 20.0
 [node name="CameraOrigin" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.18277, 5.32795)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.810937, 8.18277, 13.1158)
 current = true
+
+[node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58039, 0)
