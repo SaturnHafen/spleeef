@@ -32,6 +32,6 @@ func _on_fuse_timeout():
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("player") and not body == player:
 		var collision_direction = (body.position - position) * Vector3(1, 0, 1)
-		body.knockback = collision_direction * knockback + Vector3.UP * 4
+		body.knockback += collision_direction * knockback + Vector3.UP * 4
 		print(collision_direction)
 
