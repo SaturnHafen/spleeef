@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbys426l0s7wm"]
+
+[ext_resource type="Script" path="res://scripts/items/impulse_laser.gd" id="1_vvx13"]
+[ext_resource type="PackedScene" uid="uid://cc2ijaan114un" path="res://scenes/projectiles/impulse_laser.tscn" id="2_wpmx6"]
+[ext_resource type="PackedScene" uid="uid://duikndksib1gd" path="res://assets/blasterD.glb" id="3_k7mgq"]
+
+[node name="ImpulseLaserGun" type="Node3D"]
+script = ExtResource("1_vvx13")
+projectile = ExtResource("2_wpmx6")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Laser" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433989, 0.039079, 0)
+
+[node name="blaster" parent="." instance=ExtResource("3_k7mgq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://opndyfudaexl"]
+[gd_scene load_steps=5 format=3 uid="uid://opndyfudaexl"]
 
-[ext_resource type="Script" path="res://scripts/granate.gd" id="1_e25je"]
+[ext_resource type="Script" path="res://scripts/projectiles/grenade.gd" id="1_ci7a8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2gg4d"]
 friction = 0.66
@@ -11,20 +11,20 @@ bounce = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_0fcjf"]
 radius = 3.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_qb505"]
-
 [node name="granate" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_2gg4d")
 gravity_scale = 2.0
-script = ExtResource("1_e25je")
-knockback = 7.0
+script = ExtResource("1_ci7a8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("SphereShape3D_jhfa2")
 
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -32,9 +32,5 @@ autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KnockbackArea"]
 shape = SubResource("SphereShape3D_0fcjf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-mesh = SubResource("SphereMesh_qb505")
 
 [connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]

@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=16 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
 [ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
 [ext_resource type="PackedScene" uid="uid://b3gka77tfyfo2" path="res://scenes/game_over.tscn" id="2_yn6gk"]
-[ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/item_laser_gun.tscn" id="3_v885p"]
+[ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="3_v885p"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
-[ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/item_snowball.tscn" id="5_opt2s"]
-[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/großkaliberwerfer.tscn" id="5_wivmc"]
+[ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/items/snowball.tscn" id="5_opt2s"]
+[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="5_wivmc"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
 [ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
@@ -162,5 +162,4 @@ current = true
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
 
-[connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="death" from="Player2" to="." method="_on_player_death"]

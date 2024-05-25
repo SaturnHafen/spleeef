@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://mgvpslyfn6a8"]
 
-[ext_resource type="Script" path="res://scripts/item_snowball.gd" id="1_6e0au"]
+[ext_resource type="Script" path="res://scripts/items/snowball.gd" id="1_njgf0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bplo8"]
 
@@ -15,7 +15,7 @@ collision_layer = 0
 freeze = true
 max_contacts_reported = 10
 contact_monitor = true
-script = ExtResource("1_6e0au")
+script = ExtResource("1_njgf0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bplo8")

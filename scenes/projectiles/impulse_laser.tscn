@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cc2ijaan114un"]
 
-[ext_resource type="Script" path="res://scripts/projectile_laser.gd" id="1_c4iug"]
+[ext_resource type="Script" path="res://scripts/projectiles/laser.gd" id="1_c4iug"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://cv3xw8omtjfs0" path="res://resources/sdfs/noisy_sphere.tres" id="2_o1n44"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_57plm"]
