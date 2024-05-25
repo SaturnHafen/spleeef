@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nc74m"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ex6yh"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p1dpe"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_nlncl")
@@ -12,8 +12,9 @@ script = ExtResource("1_nlncl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_nc74m")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-mesh = SubResource("CapsuleMesh_ex6yh")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_p1dpe")
+skeleton = NodePath("../FrontMarker")
 
 [node name="FrontMarker" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72816, 0.303267, 0)
