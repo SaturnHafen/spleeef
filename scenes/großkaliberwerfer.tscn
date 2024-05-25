@@ -2,16 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/großkaliberwerfer.gd" id="1_7hwic"]
 [ext_resource type="PackedScene" uid="uid://opndyfudaexl" path="res://scenes/Granate.tscn" id="2_ncbs2"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_5ixkw"]
+[ext_resource type="PackedScene" uid="uid://cthutvj3yrrfq" path="res://assets/blasterH.glb" id="3_bjgf0"]
 
 [node name="Großkaliberwerfer" type="Node3D"]
 transform = Transform3D(0.998841, 0, 0, 0, 0.998841, 0, 0, 0, 0.998841, 0, 0, 0)
 script = ExtResource("1_7hwic")
 shoot_item = ExtResource("2_ncbs2")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-mesh = SubResource("PrismMesh_5ixkw")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 10.0
@@ -19,5 +15,8 @@ one_shot = true
 autostart = true
 
 [node name="shoot_item" type="Node3D" parent="."]
+
+[node name="blaster" parent="." instance=ExtResource("3_bjgf0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

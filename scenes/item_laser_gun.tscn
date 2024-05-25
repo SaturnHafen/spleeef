@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/item_laser_gun.gd" id="1_84xvm"]
 [ext_resource type="PackedScene" uid="uid://dh0i2l2q6r83p" path="res://scenes/projectile_laser.tscn" id="2_m6mnt"]
+[ext_resource type="PackedScene" uid="uid://doqey1dx3hrcs" path="res://assets/blasterF.glb" id="3_twcr5"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_i3288"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[node name="LaserGun" type="MeshInstance3D"]
-mesh = SubResource("PrismMesh_i3288")
+[node name="LaserGun" type="Node3D"]
 script = ExtResource("1_84xvm")
 projectile = ExtResource("2_m6mnt")
 
@@ -17,5 +14,9 @@ one_shot = true
 autostart = true
 
 [node name="Laser" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59572, 0.0697447, 0)
+
+[node name="blaster" parent="." instance=ExtResource("3_twcr5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
