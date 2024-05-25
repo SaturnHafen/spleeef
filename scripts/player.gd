@@ -43,5 +43,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.y, 0, SPEED)
 	
 	velocity += knockback
+	knockback = Vector3.ZERO
 	
 	move_and_slide()
