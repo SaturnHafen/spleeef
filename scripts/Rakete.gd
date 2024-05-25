@@ -12,9 +12,5 @@ func _process(delta):
 
 
 # bei collision mit boden was machen
-func body_entered():
-	pass
-
-
 func _on_body_entered(body):
 	pass # Replace with function body.

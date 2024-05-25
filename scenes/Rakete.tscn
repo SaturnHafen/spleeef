@@ -12,6 +12,8 @@ bounce = 1.0
 mass = 50.0
 physics_material_override = SubResource("PhysicsMaterial_2gg4d")
 gravity_scale = 4.0
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_us560")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -20,3 +22,5 @@ shape = SubResource("SphereShape3D_jhfa2")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

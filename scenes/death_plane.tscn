@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://53aspcqwurhf"]
+
+[ext_resource type="Script" path="res://scripts/death_plane.gd" id="1_elfll"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7lb3j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbnmx"]
+albedo_color = Color(1, 0.313726, 0.298039, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lhy15"]
+material = SubResource("StandardMaterial3D_fbnmx")
+size = Vector2(100, 100)
+orientation = 1
+
+[node name="DeathPlane" type="Area3D"]
+script = ExtResource("1_elfll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_7lb3j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_lhy15")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
