@@ -42,7 +42,7 @@ graph_data = {
 "6": {
 "auto_connect": true,
 "gui_position": Vector2(360, 210),
-"radius": 40.0,
+"radius": 14.0,
 "type": "SdfSphere"
 },
 "7": {
@@ -51,7 +51,7 @@ graph_data = {
 },
 "9": {
 "gui_position": Vector2(690, 130),
-"smoothness": 20.0,
+"smoothness": 8.0,
 "type": "SdfSmoothSubtract"
 }
 },
