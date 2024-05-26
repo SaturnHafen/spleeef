@@ -9,7 +9,7 @@ script = ExtResource("1_osvky")
 projectiles = ExtResource("2_wqgru")
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="default_proj" type="Marker3D" parent="."]

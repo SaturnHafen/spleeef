@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://plrcraof4yq3"]
+[gd_scene load_steps=4 format=3 uid="uid://plrcraof4yq3"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/game_over.gd" id="1_u4c2f"]
 [ext_resource type="PackedScene" uid="uid://7nemy80yhqt8" path="res://scenes/level.tscn" id="2_iqki7"]
+
+[sub_resource type="Theme" id="Theme_uxphg"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_u4c2f")
@@ -15,24 +17,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
+theme = SubResource("Theme_uxphg")
 
 [node name="VBoxContainer_rows" type="VBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer"]
 layout_mode = 2
 
 [node name="title" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer_rows"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 100
 text = "Game Over"
 horizontal_alignment = 1
+uppercase = true
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer_rows"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer_rows"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Quit"
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer_rows/RestartButton" to="." method="_on_restart_button_pressed"]

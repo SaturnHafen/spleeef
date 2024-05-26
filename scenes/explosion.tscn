@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2y757yu67x7u"]
+[gd_scene load_steps=12 format=3 uid="uid://b71pfwt1p2ess"]
+
+[ext_resource type="Script" path="res://scripts/explosion.gd" id="1_wn1tf"]
 
 [sub_resource type="Gradient" id="Gradient_qootw"]
 offsets = PackedFloat32Array(0, 0.298805, 0.665339)
@@ -8,22 +10,34 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 1, 0.882353, 0, 1)
 gradient = SubResource("Gradient_qootw")
 
 [sub_resource type="Curve" id="Curve_ecq4i"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.20809, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_60c05"]
 curve = SubResource("Curve_ecq4i")
 
+[sub_resource type="Curve" id="Curve_w5qdm"]
+max_value = 4.0
+_data = [Vector2(0, 4), 0.0, -0.0332957, 0, 0, Vector2(1, 0), -8.27006, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ld3jm"]
+curve = SubResource("Curve_w5qdm")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vk5vk"]
+particle_flag_rotate_y = true
 emission_shape = 1
 emission_sphere_radius = 5.0
-radial_velocity_min = 20.0
-radial_velocity_max = 30.0
+angle_max = 360.0
+radial_velocity_min = 4.0
+radial_velocity_max = 5.0
+velocity_limit_curve = SubResource("CurveTexture_ld3jm")
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -20.0
-radial_accel_max = -10.0
+scale_min = 0.04
+scale_max = 0.06
 scale_curve = SubResource("CurveTexture_60c05")
 color_ramp = SubResource("GradientTexture1D_d0t1i")
+turbulence_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdiot"]
 vertex_color_use_as_albedo = true
@@ -31,15 +45,21 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_hxacr"]
 material = SubResource("StandardMaterial3D_cdiot")
 
+[sub_resource type="BoxMesh" id="BoxMesh_p0etj"]
+
 [node name="Explosion" type="GPUParticles3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-amount = 128
+amount = 512
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_vk5vk")
 draw_pass_1 = SubResource("BoxMesh_hxacr")
+script = ExtResource("1_wn1tf")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_p0etj")
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

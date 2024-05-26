@@ -7,7 +7,7 @@ var direction: Vector3
 var player: Node3D
 
 @export var force_multiplier: float = 40
-@export var knockback: float = 50
+@export var knockback: float = 2
 
 func shoot():
 	just_shot = true
@@ -31,7 +31,7 @@ func _on_fuse_timeout():
 
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("player") and not body == player:
-		var collision_direction = (body.position - position) * Vector3(1, 0, 1)
-		body.knockback += collision_direction * knockback + Vector3.UP * 4
+		var collision_direction = ((body.position - position) * Vector3(1, 0, 1)).normalized()
+		body.knockback += (collision_direction + Vector3.UP) * knockback
 		print(collision_direction)
 

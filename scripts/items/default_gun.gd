@@ -14,9 +14,10 @@ func shoot():
 		$Cooldown.start()
 		
 		var projectile = projectiles.instantiate()
-		var direction = player.global_transform.basis.x
+		var direction = global_transform.basis.x
 		projectile.player = player 
 		projectile_root.add_child(projectile)
+		projectile.global_rotation = global_rotation
 		
 		projectile.add_constant_central_force(direction * speed)
 		
