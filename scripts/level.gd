@@ -17,12 +17,12 @@ func _on_player_death(player):
 				break
 			else:
 				team_won = i
-	
+
 	if team_won >= 0:
 		GameOverData.team_won = team_won
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		return
-	
+
 	if len(get_tree().get_nodes_in_group("player")) <= 0:
 		GameOverData.team_won = -1
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
@@ -36,7 +36,7 @@ func _on_item_spawner_timer_timeout():
 	var ItemArray = [preload("res://scenes/items/snowball.tscn"), preload("res://scenes/items/rocket_launcher.tscn"),
 	 preload("res://scenes/items/laser_gun.tscn"), preload("res://scenes/items/impulse_laser_gun.tscn"),
 	 preload("res://scenes/items/grenade_launcher.tscn")]
-	
+
 	add_child(InstSpawner)
 	InstSpawner.global_position = SpawnerPosition
 	InstSpawner.projectile_root = $ProjectileRoot
@@ -44,6 +44,11 @@ func _on_item_spawner_timer_timeout():
 
 
 
+#sound
+#section2 loop stoppen
+func _on_soundtimer_2_timeout():
+	$AudioStreamPlayer3D_2.stop()
+	$AudioStreamPlayer3D_3.play()
 
 #wenn sectionuberg1 fertig wird section 2 gestartet
 func _on_audio_stream_player_3d_1_finished():
@@ -52,4 +57,3 @@ func _on_audio_stream_player_3d_1_finished():
 
 func _on_audio_stream_player_3d_3_finished():
 	$AudioStreamPlayer3D_4.play()
-	
