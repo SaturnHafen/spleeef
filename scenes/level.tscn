@@ -192,7 +192,7 @@ view_distance = 512
 [node name="CameraOrigin" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+transform = Transform3D(1, 0, 0, 0, 0.675397, 0.737454, 0, -0.737454, 0.675397, 0, 10.4322, 22.3661)
 current = true
 
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
