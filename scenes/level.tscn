@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
+[ext_resource type="PackedScene" uid="uid://ds50rurer35xb" path="res://scenes/player.tscn" id="1_x5xcl"]
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" uid="uid://6a7e6rv8r1bw" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
 [ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="3_v885p"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/items/snowball.tscn" id="5_opt2s"]
@@ -53,7 +53,7 @@ _bundled = {
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
+"connections": [[1, 0, 7, 0], [10, 0, 7, 2], [10, 0, 7, 3], [12, 0, 13, 0], [13, 0, 15, 0], [14, 0, 12, 0], [15, 0, 4, 0], [3, 0, 7, 1], [7, 0, 8, 0], [8, 0, 15, 1]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -144,36 +144,48 @@ sky_material = SubResource("ProceduralSkyMaterial_berjx")
 background_mode = 2
 sky = SubResource("Sky_fqwg8")
 
-[node name="Arena" type="Node3D"]
+[node name="Node3D" type="Node3D"]
 script = ExtResource("1_1hq8d")
 game_over = SubResource("PackedScene_c1xma")
 
-[node name="Player" type="Node3D" parent="."]
+[node name="Player1" parent="." node_paths=PackedStringArray("projectile_root") groups=["team14"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03607, 1.61319, -2.31753)
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner1" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 0)
-projectile_root = NodePath("../../ProjectileRoot")
+[node name="Player2" parent="." node_paths=PackedStringArray("projectile_root") groups=["team14"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06794, 1.40805, 6.57842)
+player = 1
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner2" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, -15)
+[node name="Player3" parent="." node_paths=PackedStringArray("projectile_root") groups=["team14"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73132, 1.40805, 1.90509)
+player = 2
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner3" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15, 2, 0)
+[node name="Player4" parent="." node_paths=PackedStringArray("projectile_root") groups=["team14"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01371, 1.40805, 8.62085)
+player = 3
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner4" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 2, 15)
+[node name="Player5" parent="." node_paths=PackedStringArray("projectile_root") groups=["team58"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56012, 1.40805, -2.49122)
+player = 4
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner5" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 2, -10)
+[node name="Player6" parent="." node_paths=PackedStringArray("projectile_root") groups=["team58"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73477, 1.40805, 1.75836)
+player = 5
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner6" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 10, 2, -10)
+[node name="Player7" parent="." node_paths=PackedStringArray("projectile_root") groups=["team58"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18804, 1.40805, 2.57812)
+player = 6
+projectile_root = NodePath("../ProjectileRoot")
 
-[node name="PlayerSpawner7" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 10, 2, 10)
-
-[node name="PlayerSpawner8" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 10)
+[node name="Player8" parent="." node_paths=PackedStringArray("projectile_root") groups=["team58"] instance=ExtResource("1_x5xcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06891, 1.40805, 6.11133)
+player = 7
+projectile_root = NodePath("../ProjectileRoot")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
@@ -194,7 +206,7 @@ projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("5_opt2s")
 
 [node name="ItemSpawner4" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 0.0957022)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("8_gf2ma")
 
@@ -222,7 +234,7 @@ view_distance = 512
 [node name="CameraOrigin" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.810937, 8.18277, 13.1158)
 current = true
 
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
