@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b71pfwt1p2ess"]
+[gd_scene load_steps=11 format=3 uid="uid://b71pfwt1p2ess"]
 
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_wn1tf"]
 
@@ -45,8 +45,6 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_hxacr"]
 material = SubResource("StandardMaterial3D_cdiot")
 
-[sub_resource type="BoxMesh" id="BoxMesh_p0etj"]
-
 [node name="Explosion" type="GPUParticles3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 amount = 512
@@ -58,8 +56,5 @@ script = ExtResource("1_wn1tf")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_p0etj")
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
