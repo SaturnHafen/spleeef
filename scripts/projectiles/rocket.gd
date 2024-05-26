@@ -3,7 +3,7 @@ extends RigidBody3D
 @export var explosion: PackedScene
 var graph = preload("res://resources/sdfs/noisy_sphere.tres")
 
-@export var knockback: float = 10
+@export var knockback: float = 20
 @export var radius = 10
 
 func explode():

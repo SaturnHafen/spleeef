@@ -3,7 +3,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-const ACCELERATION: float = 20
+const KNOCKBACK_DECAY = 0.9
 
 const aim_directions = [-45, -30, 0, 15, 30, 45]
 var aim_direction_index = 2
@@ -100,14 +100,10 @@ func _physics_process(delta):
 	
 	$Mainhand.rotation_degrees.z = aim_directions[aim_direction_index]
 	
-	if input_dir:
-		velocity.x = move_toward(velocity.x, input_dir.x * SPEED, delta * ACCELERATION)
-		velocity.z = move_toward(velocity.z, input_dir.y * SPEED, delta * ACCELERATION)
-	else:
-		velocity.x = move_toward(velocity.x, 0, delta * ACCELERATION)
-		velocity.z = move_toward(velocity.y, 0, delta * ACCELERATION)
+	velocity.x = input_dir.x * SPEED
+	velocity.z = input_dir.y * SPEED
 	
-	velocity += knockback
-	knockback = Vector3.ZERO
-	
+	velocity += knockback * Vector3(1, 0.08, 1)
+	knockback *= KNOCKBACK_DECAY
+
 	move_and_slide()

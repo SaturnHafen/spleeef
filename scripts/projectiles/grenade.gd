@@ -2,7 +2,7 @@ extends RigidBody3D
 
 var graph = preload("res://resources/sdfs/noisy_sphere.tres")
 
-@export var knockback: float = 10
+@export var knockback: float = 20
 @export var radius = 7
 
 func on_timer_timeout():
