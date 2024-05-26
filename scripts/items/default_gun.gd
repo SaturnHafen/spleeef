@@ -22,7 +22,9 @@ func shoot():
 		projectile.add_constant_central_force(direction * speed)
 		
 		projectile.global_position = global_position + direction * offset
-
+		
+		#sound
+		$AudioStreamPlayer3D.play()
 	
 	
 func _on_cooldown_timeout():

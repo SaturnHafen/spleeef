@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
-[ext_resource type="PackedScene" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
+[ext_resource type="PackedScene" uid="uid://6a7e6rv8r1bw" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
-[ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
+[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
 [sub_resource type="GDScript" id="GDScript_fjc6c"]
 script/source = "extends Node3D
