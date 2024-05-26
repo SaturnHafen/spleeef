@@ -14,7 +14,7 @@ orientation = 0
 
 [node name="PlayerSelector" type="Marker3D"]
 script = ExtResource("1_c6oae")
-team_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1)])
+team_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1)])
 
 [node name="SwitchDelay" type="Timer" parent="."]
 wait_time = 0.2

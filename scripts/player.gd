@@ -107,6 +107,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, delta * ACCELERATION)
 		velocity.z = move_toward(velocity.y, 0, delta * ACCELERATION)
 	
+	var vel = velocity
+	
 	velocity += knockback
 	knockback = Vector3.ZERO
 	

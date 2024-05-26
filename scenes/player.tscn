@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds50rurer35xb"]
+[gd_scene load_steps=6 format=3 uid="uid://ds50rurer35xb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nlncl"]
 [ext_resource type="PackedScene" uid="uid://cd7xolv2pod3d" path="res://scenes/items/default_gun.tscn" id="2_lsnme"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nc74m"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrtbq"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ex6yh"]
+material = SubResource("StandardMaterial3D_wrtbq")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_nlncl")
@@ -13,7 +16,7 @@ script = ExtResource("1_nlncl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_nc74m")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ex6yh")
 
 [node name="FrontMarker" type="CSGBox3D" parent="."]
