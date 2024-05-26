@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/impulse_laser.gd" id="1_vvx13"]
 [ext_resource type="PackedScene" uid="uid://cc2ijaan114un" path="res://scenes/projectiles/impulse_laser.tscn" id="2_wpmx6"]
-[ext_resource type="PackedScene" uid="uid://blsuf58krpm0k" path="res://assets/blasterG.glb" id="3_18kcv"]
+[ext_resource type="PackedScene" uid="uid://blsuf58krpm0k" path="res://assets/weapons/blasterG.glb" id="3_18kcv"]
 
 [node name="ImpulseLaserGun" type="Node3D"]
 script = ExtResource("1_vvx13")
@@ -17,6 +17,6 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376682, 0.0754987, 0)
 
 [node name="blaster" parent="." instance=ExtResource("3_18kcv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.191478, 0.0194943, -0.034243)
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

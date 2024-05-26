@@ -29,7 +29,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var projectile_root: Marker3D
 
 var knockback: Vector3 = Vector3.ZERO
-
+var died = false
 var jumped = false
 
 func _ready():
@@ -37,6 +37,9 @@ func _ready():
 	$Mainhand/DefaultGun.player = self
 
 func die():
+	died = true
+	$AnimationTree.set("parameters/trigger_death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 	remove_from_group("player")
 	death.emit()
@@ -52,6 +55,8 @@ func switch_hands():
 	$Mainhand.add_child(off)
 
 func _process(delta):
+	if died:
+		return
 	if Input.is_action_just_pressed("player_%d_action" % player):
 		if len($Mainhand.get_children()) > 0:
 			var item = $Mainhand.get_child(0)
@@ -61,6 +66,8 @@ func _process(delta):
 		switch_hands()
 
 func _physics_process(delta):
+	if died:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -69,11 +76,11 @@ func _physics_process(delta):
 		jumped = false
 
 	# Handle jump.
-	if Input.is_action_just_pressed("player_%d_jump" % player) and is_on_floor():
+	if Input.is_action_just_pressed("player_%d_jump" % player) and (is_on_floor() or not jumped):
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_just_pressed("player_%d_jump" % player) and not jumped:
-		velocity.y = JUMP_VELOCITY
-		jumped = true
+		if not is_on_floor():
+			jumped = true
+		$AnimationTree.set("parameters/trigger_jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -83,7 +90,7 @@ func _physics_process(delta):
 		"player_%d_right" % player, 
 		"player_%d_forward" % player, 
 		"player_%d_back" % player)
-		
+	
 	var aim_dir = Input.get_vector(
 		"player_%d_aim_left" % player, 
 		"player_%d_aim_right" % player, 
@@ -99,11 +106,23 @@ func _physics_process(delta):
 		aim_direction_index -= 1
 	
 	$Mainhand.rotation_degrees.z = aim_directions[aim_direction_index]
+	$Mainhand.global_position = get_bon_pos("mixamorig_RightHandIndex1")
+	$Offhand.global_position = get_bon_pos("mixamorig_LeftUpLeg")
 	
 	velocity.x = input_dir.x * SPEED
 	velocity.z = input_dir.y * SPEED
 	
 	velocity += knockback * Vector3(1, 0.08, 1)
 	knockback *= KNOCKBACK_DECAY
+	var rotated_velocity = Vector2(velocity.z, velocity.x).rotated(-rotation.y)
+	if rotated_velocity.length() > 1:
+		rotated_velocity = rotated_velocity.normalized()
+	$AnimationTree.set("parameters/running/blend_position", rotated_velocity)
+	$AnimationTree.set("parameters/jump/blend_position", rotated_velocity)
 
 	move_and_slide()
+
+func get_bon_pos(bone_name: String) -> Vector3:
+	var skeleton: Skeleton3D = $Armature/Skeleton3D
+	var bone_transform = skeleton.get_bone_global_pose(skeleton.find_bone(bone_name))
+	return (skeleton.global_transform * bone_transform).origin

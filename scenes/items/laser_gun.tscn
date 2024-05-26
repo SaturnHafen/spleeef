@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/laser_gun.gd" id="1_6myr7"]
 [ext_resource type="PackedScene" uid="uid://dh0i2l2q6r83p" path="res://scenes/projectiles/laser.tscn" id="2_ti1nj"]
-[ext_resource type="PackedScene" uid="uid://doqey1dx3hrcs" path="res://assets/blasterF.glb" id="3_twcr5"]
+[ext_resource type="PackedScene" uid="uid://doqey1dx3hrcs" path="res://assets/weapons/blasterF.glb" id="3_twcr5"]
 
 [node name="LaserGun" type="Node3D"]
 script = ExtResource("1_6myr7")
@@ -17,6 +17,6 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59572, 0.0697447, 0)
 
 [node name="blaster" parent="." instance=ExtResource("3_twcr5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.315566, 0, -0.0358863)
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

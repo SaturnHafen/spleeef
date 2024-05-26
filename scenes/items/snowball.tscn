@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mgvpslyfn6a8"]
 
 [ext_resource type="Script" path="res://scripts/items/snowball.gd" id="1_njgf0"]
-[ext_resource type="PackedScene" uid="uid://bv5q78m260jbr" path="res://assets/snowball.glb" id="2_1w7lp"]
+[ext_resource type="PackedScene" uid="uid://bv5q78m260jbr" path="res://assets/weapons/snowball.glb" id="2_1w7lp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bplo8"]
 

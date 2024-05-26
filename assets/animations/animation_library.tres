@@ -1,0 +1,28 @@
+[gd_resource type="AnimationLibrary" load_steps=12 format=3 uid="uid://bdf44a37b4a1w"]
+
+[ext_resource type="Animation" uid="uid://1hr6c5emvy60" path="res://assets/animations/idle.res" id="1_1jnkn"]
+[ext_resource type="Animation" uid="uid://hd2h62i4pbxh" path="res://assets/animations/run_backward.res" id="2_qhuhb"]
+[ext_resource type="Animation" uid="uid://c20s1rr0per1v" path="res://assets/animations/death.res" id="3_fc68l"]
+[ext_resource type="Animation" uid="uid://cagmridq5s23l" path="res://assets/animations/run_forward.res" id="4_mgxnp"]
+[ext_resource type="Animation" uid="uid://dtiau5he0rfqj" path="res://assets/animations/run_left.res" id="5_taxku"]
+[ext_resource type="Animation" uid="uid://hs0ncljkrle8" path="res://assets/animations/run_right.res" id="6_lcdrf"]
+[ext_resource type="Animation" uid="uid://gptplhuhwr6g" path="res://assets/animations/jump.res" id="7_n2ht7"]
+[ext_resource type="Animation" uid="uid://dw3vd7yckelbf" path="res://assets/animations/jump_backward.res" id="8_p20eb"]
+[ext_resource type="Animation" uid="uid://dbyyl05c3iuxh" path="res://assets/animations/jump_forward.res" id="9_fb0a5"]
+[ext_resource type="Animation" uid="uid://crcudsteqjnnw" path="res://assets/animations/jump_right.res" id="10_o7rnh"]
+[ext_resource type="Animation" uid="uid://dpd07nyy6hlyn" path="res://assets/animations/jump_left.res" id="11_alr55"]
+
+[resource]
+_data = {
+"death": ExtResource("3_fc68l"),
+"idle": ExtResource("1_1jnkn"),
+"jump": ExtResource("7_n2ht7"),
+"jump_backward": ExtResource("8_p20eb"),
+"jump_forward": ExtResource("9_fb0a5"),
+"jump_left": ExtResource("11_alr55"),
+"jump_right": ExtResource("10_o7rnh"),
+"run_backward": ExtResource("2_qhuhb"),
+"run_forward": ExtResource("4_mgxnp"),
+"run_left": ExtResource("5_taxku"),
+"run_right": ExtResource("6_lcdrf")
+}

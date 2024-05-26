@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://de3qda5bsv0xr"]
 
 [ext_resource type="Script" path="res://scripts/items/rocket_launcher.gd" id="1_6s2ip"]
-[ext_resource type="PackedScene" uid="uid://btt7xb0i2gc8i" path="res://assets/blasterA.glb" id="2_vgowh"]
+[ext_resource type="PackedScene" uid="uid://btt7xb0i2gc8i" path="res://assets/weapons/blasterA.glb" id="2_vgowh"]
 [ext_resource type="PackedScene" uid="uid://c0kston1xdyn3" path="res://scenes/projectiles/rocket.tscn" id="2_vihj3"]
 
 [node name="RocketLauncher" type="Node3D"]
@@ -16,4 +16,4 @@ one_shot = true
 [node name="Rakete" type="Marker3D" parent="."]
 
 [node name="blaster" parent="." instance=ExtResource("2_vgowh")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.138954, 0.0475998, -0.0351145)
