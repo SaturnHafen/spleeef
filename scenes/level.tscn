@@ -151,6 +151,7 @@ projectile_root = NodePath("../ProjectileRoot")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
+shadow_enabled = true
 
 [node name="ItemSpawner" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
