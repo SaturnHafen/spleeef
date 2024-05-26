@@ -18,5 +18,4 @@ func spawn(team, player_id: int, color: Color):
 	var material: StandardMaterial3D = StandardMaterial3D.new()
 	material.albedo_color = color
 	
-	mesh_instance.set_surface_override_material(0, material)
 	new_player.add_to_group("team_%d" % team)
