@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://y7njyk36bv4a"]
+
+[ext_resource type="Script" path="res://scripts/player_selector.gd" id="1_c6oae"]
+[ext_resource type="PackedScene" uid="uid://btt7xb0i2gc8i" path="res://assets/blasterA.glb" id="2_obvhy"]
+[ext_resource type="PackedScene" uid="uid://bbre1syutvesj" path="res://assets/blasterB.glb" id="3_ux8h8"]
+[ext_resource type="PackedScene" uid="uid://divckiim8xrtd" path="res://assets/blasterC.glb" id="4_m1dcd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8g2y"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_m0gm0"]
+material = SubResource("StandardMaterial3D_j8g2y")
+size = Vector2(7, 5)
+orientation = 0
+
+[node name="PlayerSelector" type="Marker3D"]
+script = ExtResource("1_c6oae")
+team_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1)])
+
+[node name="SwitchDelay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Character" type="Marker3D" parent="."]
+
+[node name="blasterA2" parent="Character" instance=ExtResource("2_obvhy")]
+
+[node name="blasterB2" parent="Character" instance=ExtResource("3_ux8h8")]
+visible = false
+
+[node name="blasterC2" parent="Character" instance=ExtResource("4_m1dcd")]
+visible = false
+
+[node name="Spot" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, -3.09086e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 0, -1, -4.37114e-08, 1.3588, 1.22643, 0)
+visible = false
+light_energy = 5.0
+
+[node name="Ready" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430749, 0.425174, -0.3501)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 1.83223, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.433961, 0, 0)
+mesh = SubResource("QuadMesh_m0gm0")
+
+[connection signal="timeout" from="SwitchDelay" to="." method="_on_switchdelay_timeout"]

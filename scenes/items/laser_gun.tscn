@@ -9,7 +9,7 @@ script = ExtResource("1_6myr7")
 projectile = ExtResource("2_ti1nj")
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
 one_shot = true
 autostart = true
 
