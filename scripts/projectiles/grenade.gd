@@ -7,6 +7,10 @@ var graph = preload("res://resources/sdfs/noisy_sphere.tres")
 
 func on_timer_timeout():
 	Voxels.do_graph(graph, global_position, radius * Vector3.ONE)
+	
+	#sound  
+	$AudioStreamPlayer3D.play()
+	
 	var explosion = preload("res://scenes/explosion.tscn").instantiate()
 	explosion.set_radius(radius)
 	get_parent().add_child(explosion)

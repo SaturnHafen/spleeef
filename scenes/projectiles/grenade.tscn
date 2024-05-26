@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://opndyfudaexl"]
+[gd_scene load_steps=6 format=3 uid="uid://opndyfudaexl"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/grenade.gd" id="1_ci7a8"]
+[ext_resource type="AudioStream" uid="uid://45dam6t1t8kb" path="res://assets/soundeffects/Explosion_small.mp3" id="2_2w361"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2gg4d"]
 friction = 0.66
@@ -32,5 +33,8 @@ autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KnockbackArea"]
 shape = SubResource("SphereShape3D_0fcjf")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_2w361")
 
 [connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]
