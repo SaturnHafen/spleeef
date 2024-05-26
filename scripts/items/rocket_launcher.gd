@@ -33,6 +33,10 @@ func shoot():
 		uses -= 1
 		if uses <= 0:
 			queue_free() 
+			
+		#sound
+		$AudioStreamPlayer3D.play()
+		
 		
 
 func _on_cooldown_timeout():
