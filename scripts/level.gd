@@ -4,6 +4,10 @@ extends Node3D
 
 #win scenen muss im level noch im inspector reingezogen werden!!!!!!!!!!!!!!!!!!!!!
 
+func _ready():
+	#sound
+	$AudioStreamPlayer3D_1.play()
+
 func _on_player_death(player):
 	if len(get_tree().get_nodes_in_group("player")) <= 1:
 		get_tree().change_scene_to_packed(game_over)
@@ -31,3 +35,24 @@ func _on_item_spawner_timer_timeout():
 	InstSpawner.global_position = SpawnerPosition
 	InstSpawner.projectile_root = $ProjectileRoot
 	InstSpawner.spawnable_item = ItemArray.pick_random()
+
+
+
+#sound 
+#section2 loop stoppen
+func _on_soundtimer_2_timeout():
+	$AudioStreamPlayer3D_2.loop = false
+	
+#sectionübergang2zu3
+func _on_audio_stream_player_3d_2_finished():
+	if $AudioStreamPlayer3D_2.loop == false:
+		$AudioStreamPlayer3D_3.play()
+
+#wenn sectionuberg1 fertig wird section 2 gestartet
+func _on_audio_stream_player_3d_1_finished():
+	$AudioStreamPlayer3D_2.play()
+
+
+func _on_audio_stream_player_3d_3_finished():
+	$AudioStreamPlayer3D_4.play()
+	

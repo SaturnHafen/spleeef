@@ -11,6 +11,9 @@ func _ready():
 	print(Input.get_joy_info(0))
 	print(Input.get_joy_info(1))
 	print(Input.get_joy_info(2))
+	
+	#sound
+	$AudioStreamPlayer3D.play()
 
 func _on_player_joined(player: Node3D):
 	joined_players.push_back(player)
