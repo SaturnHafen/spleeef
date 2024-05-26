@@ -41,12 +41,8 @@ func _on_item_spawner_timer_timeout():
 #sound 
 #section2 loop stoppen
 func _on_soundtimer_2_timeout():
-	$AudioStreamPlayer3D_2.loop = false
-	
-#sectionübergang2zu3
-func _on_audio_stream_player_3d_2_finished():
-	if $AudioStreamPlayer3D_2.loop == false:
-		$AudioStreamPlayer3D_3.play()
+	$AudioStreamPlayer3D_2.stop()
+	$AudioStreamPlayer3D_3.play()
 
 #wenn sectionuberg1 fertig wird section 2 gestartet
 func _on_audio_stream_player_3d_1_finished():
