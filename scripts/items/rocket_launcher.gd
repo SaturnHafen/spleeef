@@ -1,5 +1,5 @@
 extends Node3D
-const speed = 1000
+const speed = 100
 const offset = 1
 var active = true
 
