@@ -50,6 +50,8 @@ current = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_jgc1u")
+volume_db = -20.0
+max_db = -10.0
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_starttimer_timeout"]
 [connection signal="player_joined" from="PlayerSelector1" to="." method="_on_player_joined"]
