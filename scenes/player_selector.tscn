@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://y7njyk36bv4a"]
+[gd_scene load_steps=11 format=3 uid="uid://dmjcr80p0hk17"]
 
 [ext_resource type="Script" path="res://scripts/player_selector.gd" id="1_c6oae"]
-[ext_resource type="PackedScene" uid="uid://btt7xb0i2gc8i" path="res://assets/blasterA.glb" id="2_obvhy"]
-[ext_resource type="PackedScene" uid="uid://bbre1syutvesj" path="res://assets/blasterB.glb" id="3_ux8h8"]
-[ext_resource type="PackedScene" uid="uid://divckiim8xrtd" path="res://assets/blasterC.glb" id="4_m1dcd"]
+[ext_resource type="PackedScene" uid="uid://c5cy7jmsei3ov" path="res://scenes/characters/abe.tscn" id="2_n0idg"]
+[ext_resource type="PackedScene" uid="uid://63uscahnps6i" path="res://scenes/characters/desbians.tscn" id="4_glcbp"]
+[ext_resource type="PackedScene" uid="uid://c7ub6wiifxvqg" path="res://scenes/characters/gnoblin.tscn" id="5_0a7ib"]
+[ext_resource type="PackedScene" uid="uid://cgixs53r7hyi7" path="res://scenes/characters/granny.tscn" id="6_p1sbr"]
+[ext_resource type="PackedScene" uid="uid://cfyeb6e4bs5d4" path="res://scenes/characters/guards.tscn" id="7_igsmo"]
+[ext_resource type="PackedScene" uid="uid://bcefmdvn0vad8" path="res://scenes/characters/mutant.tscn" id="8_xwcgd"]
+[ext_resource type="PackedScene" uid="uid://kk5r70u71gum" path="res://scenes/characters/racer.tscn" id="9_crxoa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8g2y"]
 
@@ -22,16 +26,28 @@ one_shot = true
 
 [node name="Character" type="Marker3D" parent="."]
 
-[node name="blasterA2" parent="Character" instance=ExtResource("2_obvhy")]
+[node name="Armature1" parent="Character" instance=ExtResource("2_n0idg")]
 
-[node name="blasterB2" parent="Character" instance=ExtResource("3_ux8h8")]
+[node name="Armature2" parent="Character" instance=ExtResource("4_glcbp")]
 visible = false
 
-[node name="blasterC2" parent="Character" instance=ExtResource("4_m1dcd")]
+[node name="Armature3" parent="Character" instance=ExtResource("5_0a7ib")]
+visible = false
+
+[node name="Armature4" parent="Character" instance=ExtResource("6_p1sbr")]
+visible = false
+
+[node name="Armature5" parent="Character" instance=ExtResource("7_igsmo")]
+visible = false
+
+[node name="Armature6" parent="Character" instance=ExtResource("8_xwcgd")]
+visible = false
+
+[node name="Armature7" parent="Character" instance=ExtResource("9_crxoa")]
 visible = false
 
 [node name="Spot" type="SpotLight3D" parent="."]
-transform = Transform3D(0.707107, -3.09086e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 0, -1, -4.37114e-08, 1.3588, 1.22643, 0)
+transform = Transform3D(0.707107, -3.09086e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 0, -1, -4.37114e-08, 1.3588, 2.52616, 0)
 visible = false
 light_energy = 5.0
 
