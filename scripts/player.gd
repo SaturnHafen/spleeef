@@ -8,7 +8,7 @@ const KNOCKBACK_DECAY = 0.9
 const aim_directions = [-45, -30, 0, 15, 30, 45]
 var aim_direction_index = 2
 
-signal death
+signal death(player: Node3D)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -42,7 +42,7 @@ func die():
 	await get_tree().create_timer(3.0).timeout
 	queue_free()
 	remove_from_group("player")
-	death.emit()
+	death.emit(self)
 
 func switch_hands():
 	var main = $Mainhand.get_child(0)

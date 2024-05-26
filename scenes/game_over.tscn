@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://plrcraof4yq3"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_41mmk"]
+
+[sub_resource type="Theme" id="Theme_uxphg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpxln"]
+bg_color = Color(0.863965, 0.549839, 0.385285, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+anti_aliasing_size = 5.82
+
+[sub_resource type="Theme" id="Theme_kp76n"]
+default_base_scale = 2.2
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_41mmk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00222, 1)
+theme = SubResource("Theme_uxphg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fpxln")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer_rows" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer_rows"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer_rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer_rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer_rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kp76n")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer_rows/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

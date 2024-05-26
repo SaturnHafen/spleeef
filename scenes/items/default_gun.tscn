@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd7xolv2pod3d"]
+[gd_scene load_steps=5 format=3 uid="uid://cd7xolv2pod3d"]
 
 [ext_resource type="Script" path="res://scripts/items/default_gun.gd" id="1_osvky"]
 [ext_resource type="PackedScene" uid="uid://cthutvj3yrrfq" path="res://assets/weapons/blasterH.glb" id="2_2p0x0"]
 [ext_resource type="PackedScene" uid="uid://diqqt441y74sf" path="res://scenes/projectiles/default_projectiles.tscn" id="2_wqgru"]
+[ext_resource type="AudioStream" uid="uid://btqh5em3a7iwt" path="res://assets/soundeffects/shoot3.mp3" id="4_0lkwq"]
 
 [node name="DefaultGun" type="Node3D"]
 script = ExtResource("1_osvky")
@@ -16,5 +17,8 @@ one_shot = true
 
 [node name="blasterH" parent="." instance=ExtResource("2_2p0x0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.171043, 0.0209681, -0.0405997)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_0lkwq")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
