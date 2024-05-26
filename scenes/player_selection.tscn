@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://c375bekrpivnw"]
+
+[ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_wmarh"]
+[ext_resource type="PackedScene" uid="uid://y7njyk36bv4a" path="res://scenes/player_selector.tscn" id="1_ypoco"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_wmarh")
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="PlayerSelector1" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.5)
+
+[node name="PlayerSelector2" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 4.5)
+player = 1
+
+[node name="PlayerSelector3" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.5)
+player = 2
+
+[node name="PlayerSelector4" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 1.5)
+player = 3
+
+[node name="PlayerSelector5" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)
+player = 4
+
+[node name="PlayerSelector6" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -1.5)
+player = 5
+
+[node name="PlayerSelector7" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.5)
+player = 6
+
+[node name="PlayerSelector8" parent="." instance=ExtResource("1_ypoco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -4.5)
+player = 7
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.21166, 0, 0)
+current = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_starttimer_timeout"]
+[connection signal="player_joined" from="PlayerSelector1" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector1" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector2" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector2" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector3" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector3" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector4" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector4" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector5" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector5" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector6" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector6" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector7" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector7" to="." method="_on_player_ready"]
+[connection signal="player_joined" from="PlayerSelector8" to="." method="_on_player_joined"]
+[connection signal="player_ready" from="PlayerSelector8" to="." method="_on_player_ready"]
