@@ -4,9 +4,10 @@ extends RigidBody3D
 var graph = preload("res://resources/sdfs/noisy_sphere.tres")
 
 @export var knockback: float = 10
+@export var radius = 10
 
 func explode():
-	Voxels.do_graph(graph, global_position, Vector3(35, 35, 35))
+	Voxels.do_graph(graph, global_position, radius * Vector3.ONE)
 	
 	var collisions = $KnockbackArea.get_overlapping_bodies()
 	for body in collisions:

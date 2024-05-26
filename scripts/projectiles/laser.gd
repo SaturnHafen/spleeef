@@ -14,7 +14,7 @@ func _do_destruction():
 	Voxels.do_graph(
 		graph,
 		global_position + direction * length / 2.0,
-		Vector3(length * 5, radius * 10, radius * 10),
+		Vector3(length, radius * 2, radius * 2),
 		global_rotation.z,
 		global_rotation.y)
 

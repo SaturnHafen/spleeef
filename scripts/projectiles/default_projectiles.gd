@@ -3,6 +3,7 @@ extends Node3D
 var player: Node3D
 
 @export var knockback: float = 1
+@export var radius: float = 1
 
 func _on_body_entered(target: Node3D):
 	#what happens when bullet hits other player
@@ -10,9 +11,11 @@ func _on_body_entered(target: Node3D):
 		var collision_direction = (target.position - position) * Vector3(1, 0, 1)
 		target.knockback += collision_direction * knockback + Vector3.UP * 4
 		print(collision_direction)
-		queue_free()
 #what happens when bullet hits ground
 	if target.is_in_group("ground"): 
-		pass
-		#macht marius
-	#queue_free()
+		Voxels.do_graph(
+			preload("res://resources/sdfs/noisy_sphere.tres"),
+			global_position,
+			radius * Vector3.ONE)
+
+	queue_free()
