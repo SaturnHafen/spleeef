@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1rksi0f440ri"]
+
+[ext_resource type="PackedScene" uid="uid://bm3qwiaw5ux01" path="res://assets/3d model/performence_vulkan.glb" id="1_ixm3u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nt0al"]
+albedo_color = Color(0.382648, 0.312048, 0.228394, 1)
+
+[node name="performence_vulkan" instance=ExtResource("1_ixm3u")]
+
+[node name="vulkano" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nt0al")
