@@ -10,11 +10,11 @@ func _on_player_death(player):
 		
 		
 #team 2 wins
-	if len(get_tree().get_nodes_in_group("team_0"))<=0:
+	if len(get_tree().get_nodes_in_group("team_0")) <= 0:
 		get_tree().change_scene_to_packed(game_over)
 		
 #team 1 wins
-	if len(get_tree().get_nodes_in_group("team_1"))<=0:
+	if len(get_tree().get_nodes_in_group("team_1")) <= 0:
 		get_tree().change_scene_to_packed(game_over)
 		
 
