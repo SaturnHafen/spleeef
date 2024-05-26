@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://plrcraof4yq3"]
+[gd_scene load_steps=3 format=3 uid="uid://plrcraof4yq3"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/game_over.gd" id="1_u4c2f"]
+[ext_resource type="PackedScene" uid="uid://7nemy80yhqt8" path="res://scenes/level.tscn" id="2_iqki7"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_u4c2f")
+level = ExtResource("2_iqki7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
