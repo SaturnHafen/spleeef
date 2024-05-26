@@ -40,8 +40,8 @@ func die():
 	died = true
 	$AnimationTree.set("parameters/trigger_death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	await get_tree().create_timer(3.0).timeout
+	get_parent().remove_child(self)
 	queue_free()
-	remove_from_group("player")
 	death.emit(self)
 
 func switch_hands():

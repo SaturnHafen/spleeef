@@ -5,11 +5,8 @@ var level_scene = load("res://scenes/player_selection.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if win_team == 1:
-		$CanvasLayer/MarginContainer/PanelContainer/VBoxContainer_rows/title.text = "team 1 wins"
-	if win_team == 2:
-		$CanvasLayer/MarginContainer/PanelContainer/VBoxContainer_rows/title.text = "team 2 wins"
-	
+	if GameOverData.team_won >= 0:
+		$CanvasLayer/PanelContainer/MarginContainer/VBoxContainer_rows/title.text = "Team %s wins" % GameOverData.team_names[GameOverData.team_won]
 
 func _on_restart_button_pressed():
 	var new_round = level_scene.instantiate()

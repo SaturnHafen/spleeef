@@ -9,18 +9,24 @@ func _ready():
 	$AudioStreamPlayer3D_1.play()
 
 func _on_player_death(player):
-	if len(get_tree().get_nodes_in_group("player")) <= 1:
-		get_tree().change_scene_to_packed(game_over)
-		
-		
-#team 2 wins
-	if len(get_tree().get_nodes_in_group("team_0")) <= 0:
-		get_tree().change_scene_to_packed(game_over)
-		
-#team 1 wins
-	if len(get_tree().get_nodes_in_group("team_1")) <= 0:
-		get_tree().change_scene_to_packed(game_over)
-		
+	var team_won = -1
+	for i in range(len(GameOverData.team_colors)):
+		if len(get_tree().get_nodes_in_group("team_%d" % i)) >= 1:
+			if team_won >= 0:
+				team_won = -1
+				break
+			else:
+				team_won = i
+	
+	if team_won >= 0:
+		GameOverData.team_won = team_won
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		return
+	
+	if len(get_tree().get_nodes_in_group("player")) <= 0:
+		GameOverData.team_won = -1
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		return
 
 
 func _on_item_spawner_timer_timeout():
@@ -38,15 +44,6 @@ func _on_item_spawner_timer_timeout():
 
 
 
-#sound 
-#section2 loop stoppen
-func _on_soundtimer_2_timeout():
-	$AudioStreamPlayer3D_2.loop = false
-	
-#sectionübergang2zu3
-func _on_audio_stream_player_3d_2_finished():
-	if $AudioStreamPlayer3D_2.loop == false:
-		$AudioStreamPlayer3D_3.play()
 
 #wenn sectionuberg1 fertig wird section 2 gestartet
 func _on_audio_stream_player_3d_1_finished():

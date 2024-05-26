@@ -21,8 +21,6 @@ enum State {
 	PLAYER_TEAM_SELECTED
 }
 
-@export var team_colors: Array[Color]
-
 var state = State.PLAYER_DISABLED
 
 var selected_player = 0
@@ -49,7 +47,7 @@ func _process(delta):
 	elif state == State.PLAYER_JOINED:
 		if Input.is_action_just_pressed("player_%d_switch" % player):
 			state = State.PLAYER_CHAR_SELECTED
-			$Spot.light_color = team_colors[0]
+			$Spot.light_color = GameOverData.team_colors[0]
 			disable_change_selection()
 			return
 		
@@ -96,12 +94,12 @@ func _process(delta):
 		selected_team += int(selection)
 		
 		if selected_team < 0:
-			selected_team = len(team_colors) - 1
-		if selected_team >= len(team_colors):
+			selected_team = len(GameOverData.team_colors) - 1
+		if selected_team >= len(GameOverData.team_colors):
 			selected_team = 0
 		
 		disable_change_selection()
-		$Spot.light_color = team_colors[selected_team]
+		$Spot.light_color = GameOverData.team_colors[selected_team]
 		
 	elif state == State.PLAYER_TEAM_SELECTED:
 		pass

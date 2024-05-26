@@ -33,7 +33,7 @@ func _on_starttimer_timeout():
 	for i in min(len(spawner), len(ready_players)):
 		var p = ready_players[i]
 		var character = p.get_node("Character").get_children()[p.selected_player]
-		spawner[i].spawn(character, p.selected_team, p.player, p.team_colors[p.selected_team])
+		spawner[i].spawn(character, p.selected_team, p.player, GameOverData.team_colors[p.selected_team])
 	
 	get_tree().root.add_child(arena)
 	get_tree().root.remove_child(self)
