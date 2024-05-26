@@ -7,6 +7,7 @@ func spawn(team, player_id: int, color: Color):
 	var new_player: Node3D = player.instantiate()
 	new_player.player = player_id
 	new_player.projectile_root = projectile_root
+	new_player.death.connect($"../.."._on_player_death)
 	get_parent().add_child(new_player)
 	await new_player.ready
 	new_player.global_position = global_position
