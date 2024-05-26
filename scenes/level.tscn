@@ -177,7 +177,6 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
-shadow_enabled = true
 
 [node name="ItemSpawner" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
@@ -203,7 +202,7 @@ spawnable_item = ExtResource("8_gf2ma")
 projectile_root = NodePath("../ProjectileRoot")
 spawnable_item = ExtResource("9_gff4y")
 
-[node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="." groups=["ground"]]
+[node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(0.2, -1.42058e-05, 8.32889e-05, 1.41632e-05, 0.2, 0.000102256, -8.32962e-05, -0.000102251, 0.2, 0, -4, 0)
 generator = SubResource("VoxelGeneratorGraph_babyf")
 mesher = SubResource("VoxelMesherTransvoxel_r0c7e")
