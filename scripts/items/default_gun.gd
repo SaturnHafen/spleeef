@@ -15,7 +15,7 @@ func shoot():
 		
 		var projectile = projectiles.instantiate()
 		var direction = player.global_transform.basis.x
-		
+		projectile.player = player 
 		projectile_root.add_child(projectile)
 		
 		projectile.add_constant_central_force(direction * speed)
