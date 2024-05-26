@@ -5,6 +5,13 @@ var ready_players: Array = []
 
 @export var level: PackedScene
 
+func _ready():
+	print("Joypads" + str(Input.get_connected_joypads()))
+	
+	print(Input.get_joy_info(0))
+	print(Input.get_joy_info(1))
+	print(Input.get_joy_info(2))
+
 func _on_player_joined(player: Node3D):
 	joined_players.push_back(player)
 	$StartTimer.stop()
