@@ -1,16 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=18 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
-[ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner.tscn" id="2_7j2rp"]
-[ext_resource type="PackedScene" uid="uid://6a7e6rv8r1bw" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
-[ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="3_v885p"]
+[ext_resource type="PackedScene" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
-[ext_resource type="PackedScene" uid="uid://mgvpslyfn6a8" path="res://scenes/items/snowball.tscn" id="5_opt2s"]
-[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="5_wivmc"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
-[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
-[ext_resource type="PackedScene" uid="uid://dbys426l0s7wm" path="res://scenes/items/impulse_laser_gun.tscn" id="8_gf2ma"]
-[ext_resource type="PackedScene" uid="uid://de3qda5bsv0xr" path="res://scenes/items/rocket_launcher.tscn" id="9_gff4y"]
+[ext_resource type="PackedScene" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 
 [sub_resource type="GDScript" id="GDScript_fjc6c"]
 script/source = "extends Node3D
@@ -53,7 +47,7 @@ _bundled = {
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
+"connections": [[1, 0, 7, 0], [10, 0, 7, 2], [10, 0, 7, 3], [12, 0, 13, 0], [13, 0, 15, 0], [14, 0, 12, 0], [15, 0, 4, 0], [3, 0, 7, 1], [7, 0, 8, 0], [8, 0, 15, 1]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -154,60 +148,29 @@ game_over = SubResource("PackedScene_c1xma")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 0)
 projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner2" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner2" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, -15)
-projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner3" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner3" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15, 2, 0)
-projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner4" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner4" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 2, 15)
-projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner5" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner5" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 2, -10)
-projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner6" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner6" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 10, 2, -10)
-projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner7" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner7" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 10, 2, 10)
-projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawner8" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
+[node name="PlayerSpawner8" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 10)
-projectile_root = NodePath("../../ProjectileRoot")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
-
-[node name="ItemSpawner" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
-projectile_root = NodePath("../ProjectileRoot")
-spawnable_item = ExtResource("3_v885p")
-
-[node name="ItemSpawner2" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -4)
-projectile_root = NodePath("../ProjectileRoot")
-spawnable_item = ExtResource("5_wivmc")
-
-[node name="ItemSpawner3" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
-projectile_root = NodePath("../ProjectileRoot")
-spawnable_item = ExtResource("5_opt2s")
-
-[node name="ItemSpawner4" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 0.0957022)
-projectile_root = NodePath("../ProjectileRoot")
-spawnable_item = ExtResource("8_gf2ma")
-
-[node name="ItemSpawner5" parent="." node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_7j2rp")]
-projectile_root = NodePath("../ProjectileRoot")
-spawnable_item = ExtResource("9_gff4y")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 transform = Transform3D(0.2, -1.42058e-05, 8.32889e-05, 1.41632e-05, 0.2, 0.000102256, -8.32962e-05, -0.000102251, 0.2, 0, -4, 0)
@@ -220,7 +183,6 @@ mesh_block_size = 32
 full_load_mode_enabled = true
 threaded_update_enabled = true
 script = ExtResource("4_ibc45")
-metadata/_edit_lock_ = true
 
 [node name="VoxelViewer" type="VoxelViewer" parent="VoxelLodTerrain"]
 view_distance = 512
@@ -235,7 +197,12 @@ current = true
 
 [node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
-metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1fodr")
+
+[node name="ItemSpawnerTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="ItemSpawnerTimer" to="." method="_on_item_spawner_timer_timeout"]

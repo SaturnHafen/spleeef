@@ -53,3 +53,5 @@ func give_item_to(body: Node3D, target: Node3D):
 	$RespawnTimer.start()
 	$Light.visible = false
 	disabled = true
+	
+	queue_free()
