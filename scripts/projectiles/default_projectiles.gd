@@ -2,7 +2,7 @@ extends Node3D
 
 var player: Node3D
 
-@export var knockback: float = 5
+@export var knockback: float = 5000000
 
 func _on_body_entered(target: Node3D):
 	#what happens when bullet hits other player
