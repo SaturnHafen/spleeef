@@ -106,8 +106,8 @@ func _physics_process(delta):
 		aim_direction_index -= 1
 	
 	$Mainhand.rotation_degrees.z = aim_directions[aim_direction_index]
-	$Mainhand.global_position = get_bon_pos("mixamorig_RightHandIndex1")
-	$Offhand.global_position = get_bon_pos("mixamorig_LeftUpLeg")
+	$Mainhand.global_position = get_bone_pos("mixamorig_RightHandIndex1")
+	$Offhand.global_position = get_bone_pos("mixamorig_LeftUpLeg")
 	
 	velocity.x = input_dir.x * SPEED
 	velocity.z = input_dir.y * SPEED
@@ -122,7 +122,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func get_bon_pos(bone_name: String) -> Vector3:
+func get_bone_pos(bone_name: String) -> Vector3:
 	var skeleton: Skeleton3D = $Armature/Skeleton3D
 	var bone_transform = skeleton.get_bone_global_pose(skeleton.find_bone(bone_name))
 	return (skeleton.global_transform * bone_transform).origin
