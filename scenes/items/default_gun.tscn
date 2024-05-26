@@ -11,7 +11,6 @@ projectiles = ExtResource("2_wqgru")
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="default_proj" type="Marker3D" parent="."]
 

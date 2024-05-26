@@ -34,6 +34,7 @@ var jumped = false
 
 func _ready():
 	$Mainhand/DefaultGun.projectile_root = projectile_root
+	$Mainhand/DefaultGun.player = self
 
 func die():
 	queue_free()

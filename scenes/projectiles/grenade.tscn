@@ -11,7 +11,7 @@ bounce = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_0fcjf"]
 radius = 3.0
 
-[node name="Grenade" type="RigidBody3D"]
+[node name="granate" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_2gg4d")
 gravity_scale = 2.0
 script = ExtResource("1_ci7a8")
