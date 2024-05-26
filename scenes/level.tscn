@@ -151,29 +151,29 @@ game_over = SubResource("PackedScene_c1xma")
 [node name="Player" type="Node3D" parent="."]
 
 [node name="PlayerSpawner1" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4.64494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 0)
 projectile_root = NodePath("../../ProjectileRoot")
 
-[node name="PlayerSpawn2" type="Marker3D" parent="Player"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -15)
+[node name="PlayerSpawner2" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, -15)
 
-[node name="PlayerSpawn3" type="Marker3D" parent="Player"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15, 1, 0)
+[node name="PlayerSpawner3" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15, 2, 0)
 
-[node name="PlayerSpawn4" type="Marker3D" parent="Player"]
-transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 1, 15)
+[node name="PlayerSpawner4" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 2, 15)
 
-[node name="PlayerSpawn5" type="Marker3D" parent="Player"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 1, -10)
+[node name="PlayerSpawner5" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 2, -10)
 
-[node name="PlayerSpawn6" type="Marker3D" parent="Player"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 10, 1, -10)
+[node name="PlayerSpawner6" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 10, 2, -10)
 
-[node name="PlayerSpawn7" type="Marker3D" parent="Player"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 10, 1, 10)
+[node name="PlayerSpawner7" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 10, 2, 10)
 
-[node name="PlayerSpawn8" type="Marker3D" parent="Player"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 1, 10)
+[node name="PlayerSpawner8" parent="Player" instance=ExtResource("2_fxpc2")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 10)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
