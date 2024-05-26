@@ -15,10 +15,4 @@ func spawn(character, team, player_id: int, color: Color):
 	await new_player.ready
 	new_player.global_position = global_position
 	new_player.global_rotation = global_rotation
-	
-	var mesh_instance: MeshInstance3D = new_player.get_node("MeshInstance")
-	
-	var material: StandardMaterial3D = StandardMaterial3D.new()
-	material.albedo_color = color
-	
 	new_player.add_to_group("team_%d" % team)
