@@ -13,15 +13,19 @@ func try_shoot():
 	if ammo <= 0:
 		print("No ammo left")
 		return
-	
+
 	if !$Cooldown.is_stopped():
 		print("Cooldown on the gun")
 		return
-	
+
 	$AudioStreamPlayer3D.play()
 	_shoot()
-	
+
 	ammo -= 1
+
+	if ammo <= 0:
+		queue_free()
+
 	$Cooldown.start(cooldown)
 
 func _shoot():

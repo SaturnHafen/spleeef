@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 [ext_resource type="AudioStream" uid="uid://dwup5payo57jr" path="res://assets/music/2ndsectionubergang.mp3" id="8_j4qyk"]
 [ext_resource type="AudioStream" uid="uid://x4nk0thjapp1" path="res://assets/music/3rdsection.mp3" id="9_j6dw4"]
-[ext_resource type="PackedScene" uid="uid://c1rksi0f440ri" path="res://scenes/performence_vulkan.tscn" id="10_f4dbe"]
+[ext_resource type="PackedScene" path="res://scenes/performence_vulkan.tscn" id="10_f4dbe"]
 
 [sub_resource type="GDScript" id="GDScript_fjc6c"]
 script/source = "extends Node2D
@@ -52,7 +52,7 @@ _bundled = {
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[1, 0, 7, 0], [10, 0, 7, 2], [10, 0, 7, 3], [12, 0, 13, 0], [13, 0, 15, 0], [14, 0, 12, 0], [15, 0, 4, 0], [3, 0, 7, 1], [7, 0, 8, 0], [8, 0, 15, 1]],
+"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -231,6 +231,6 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -1071.95, -16.5553, 83.
 [connection signal="timeout" from="ItemSpawnerTimer" to="." method="_on_item_spawner_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D_1" to="." method="_on_audio_stream_player_3d_1_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D_2" to="." method="_on_audio_stream_player_3d_2_finished"]
-[connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_timeout"]
 [connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_2_timeout"]
+[connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D_3" to="." method="_on_audio_stream_player_3d_3_finished"]
