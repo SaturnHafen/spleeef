@@ -33,7 +33,7 @@ func _on_item_spawner_timer_timeout():
 	var Spawner = preload("res://scenes/item_spawner.tscn")
 	var InstSpawner = Spawner.instantiate()
 	var SpawnerPosition = Vector3(randf_range(-15, 15), 0.5, randf_range(-15, 15))
-	var ItemArray = [preload("res://scenes/items/snowball.tscn"), preload("res://scenes/items/rocket_launcher.tscn"),
+	var ItemArray = [preload("res://scenes/items/rocket_launcher.tscn"),
 	 preload("res://scenes/items/laser_gun.tscn"), preload("res://scenes/items/impulse_laser_gun.tscn"),
 	 preload("res://scenes/items/grenade_launcher.tscn")]
 
