@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4yumdc3ig2i6"]
+
+[ext_resource type="Script" path="res://scripts/item_spawner/item_spawner.gd" id="1_ltcp7"]
+
+[node name="ItemSpawner" type="Marker3D"]
+script = ExtResource("1_ltcp7")
+low_timeout = null
+high_timeout = null
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

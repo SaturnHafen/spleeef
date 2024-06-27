@@ -1,10 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=27 format=3 uid="uid://7nemy80yhqt8"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
 [ext_resource type="PackedScene" uid="uid://6a7e6rv8r1bw" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
+[ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner/item_spawner.tscn" id="3_j2egy"]
+[ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="4_bjnwy"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
+[ext_resource type="PackedScene" uid="uid://de3qda5bsv0xr" path="res://scenes/items/rocket_launcher.tscn" id="5_ycclx"]
 [ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
 [ext_resource type="AudioStream" uid="uid://d3hjl272o23a8" path="res://assets/music/1stsectionubergang.mp3" id="6_256qc"]
+[ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="6_evic2"]
 [ext_resource type="AudioStream" uid="uid://cpcmpw52ru4d" path="res://assets/music/2ndsection.mp3" id="6_xmkl8"]
 [ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
 [ext_resource type="AudioStream" uid="uid://dwup5payo57jr" path="res://assets/music/2ndsectionubergang.mp3" id="8_j4qyk"]
@@ -174,6 +178,71 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 [node name="PlayerSpawner8" parent="Player" instance=ExtResource("2_fxpc2")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 10)
 
+[node name="Items" type="Node3D" parent="."]
+
+[node name="ItemSpawner1" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 5, 0)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner2" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5, 10)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner3" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, 0)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner4" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 5, -10)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner5" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 7, 5, 7)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner6" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7, 5, 7)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner7" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 5, -7)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner8" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 7, 5, -7)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
+[node name="ItemSpawner9" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+low_timeout = null
+high_timeout = null
+projectile_root = NodePath("../../ProjectileRoot")
+items = Array[PackedScene]([ExtResource("5_ycclx"), ExtResource("6_evic2")])
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
 
@@ -206,10 +275,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1fodr")
 
-[node name="ItemSpawnerTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="AudioStreamPlayer3D_1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_256qc")
 
@@ -228,7 +293,6 @@ stream = ExtResource("9_j6dw4")
 [node name="performence_vulkan2" parent="." instance=ExtResource("10_f4dbe")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -1071.95, -16.5553, 83.4474)
 
-[connection signal="timeout" from="ItemSpawnerTimer" to="." method="_on_item_spawner_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D_1" to="." method="_on_audio_stream_player_3d_1_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D_2" to="." method="_on_audio_stream_player_3d_2_finished"]
 [connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_2_timeout"]
