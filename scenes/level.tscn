@@ -231,6 +231,6 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -1071.95, -16.5553, 83.
 [connection signal="timeout" from="ItemSpawnerTimer" to="." method="_on_item_spawner_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D_1" to="." method="_on_audio_stream_player_3d_1_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D_2" to="." method="_on_audio_stream_player_3d_2_finished"]
-[connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_2_timeout"]
 [connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_timeout"]
+[connection signal="timeout" from="AudioStreamPlayer3D_2/soundtimer" to="." method="_on_soundtimer_2_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D_3" to="." method="_on_audio_stream_player_3d_3_finished"]

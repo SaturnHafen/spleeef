@@ -1,25 +1,10 @@
-extends Node3D
+extends Weapon
 
-var active = false
-@export var uses: int = 5
-
-@export var projectile: PackedScene
-
-var projectile_root: Node3D
-var player: Node3D
-
-func shoot():
-	if active:
-		uses -= 1
-		$Cooldown.start()
-		var beam = projectile.instantiate()
-		$Laser.add_child(beam)
-		active = false
-		if uses <= 0:
-			queue_free()
-			
-		#sound
-		$AudioStreamPlayer3D.play()
-
-func _on_cooldown_timeout():
-	active = true
+func _shoot():
+	var instance = projectile.instantiate()
+	var direction = global_transform.basis.x
+	
+	projectile_root.add_child(instance)
+	
+	instance.global_rotation = global_rotation
+	instance.global_position = global_position + direction
