@@ -86,7 +86,7 @@ func update_hud():
 	player_view.set_team_name(team.name if team else "")
 	var weapon = get_weapon()
 	player_view.set_weapon_name(weapon.name if weapon else "")
-	player_view.set_ammo(str(weapon.ammo) if weapon else "")
+	player_view.set_ammo(("∞" if weapon.ammo < 0 else str(weapon.ammo)) if weapon else "")
 
 func proceed():
 	return Input.is_action_just_pressed("player_%d_action" % id)

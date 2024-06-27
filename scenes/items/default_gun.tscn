@@ -9,6 +9,7 @@
 [node name="Weapon" instance=ExtResource("1_jfc12")]
 script = ExtResource("2_j14bv")
 cooldown = 0.5
+ammo = -1
 speed = 20
 projectile = ExtResource("2_wqgru")
 

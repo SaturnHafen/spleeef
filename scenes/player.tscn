@@ -109,7 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.532584, 1.14451, 0.196108)
 
 [node name="DefaultGun" parent="Mainhand" instance=ExtResource("2_lsnme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.014132)
-ammo = 2
 
 [node name="Offhand" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.6)
