@@ -2,7 +2,7 @@ extends Area3D
 
 const graph = preload("res://resources/sdfs/laser.tres")
 const length = 20.0
-const radius = 0.5
+var radius = 0.5
 const knockback = 10
 
 func _ready():

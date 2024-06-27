@@ -4,8 +4,6 @@
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_bycyt")
-cooldown = 6.4
-ammo = 7
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
