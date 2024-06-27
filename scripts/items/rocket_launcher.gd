@@ -1,6 +1,6 @@
 extends Weapon
 
-var speed = 100
+const speed = 100
 
 func _shoot():
 	var instance = projectile.instantiate()
