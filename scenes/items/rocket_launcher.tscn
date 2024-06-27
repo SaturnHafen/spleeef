@@ -9,6 +9,7 @@
 [node name="Weapon" instance=ExtResource("1_nun3e")]
 script = ExtResource("1_6s2ip")
 ammo = 1
+speed = 100
 projectile = ExtResource("2_vihj3")
 
 [node name="AudioStreamPlayer3D" parent="." index="1"]

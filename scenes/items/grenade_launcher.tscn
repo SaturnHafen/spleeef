@@ -7,6 +7,8 @@
 
 [node name="Weapon" instance=ExtResource("1_wr1ny")]
 script = ExtResource("1_7hwic")
+ammo = 3
+speed = 2000
 projectile = ExtResource("2_ncbs2")
 
 [node name="blaster" parent="." index="2" instance=ExtResource("3_q4a3d")]
