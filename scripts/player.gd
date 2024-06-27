@@ -60,7 +60,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("player_%d_action" % player):
 		if len($Mainhand.get_children()) > 0:
 			var item = $Mainhand.get_child(0)
-			item.shoot()
+			item.try_shoot()
 
 	if Input.is_action_just_pressed("player_%d_switch" % player):
 		switch_hands()
