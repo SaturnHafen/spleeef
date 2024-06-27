@@ -1,58 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://7nemy80yhqt8"]
+[gd_scene load_steps=20 format=3 uid="uid://7nemy80yhqt8"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_1hq8d"]
-[ext_resource type="PackedScene" uid="uid://6a7e6rv8r1bw" path="res://scenes/player_spawner.tscn" id="2_fxpc2"]
-[ext_resource type="Script" path="res://scripts/terrain.gd" id="4_ibc45"]
-[ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="6_7maba"]
-[ext_resource type="AudioStream" uid="uid://d3hjl272o23a8" path="res://assets/music/1stsectionubergang.mp3" id="6_256qc"]
-[ext_resource type="AudioStream" uid="uid://cpcmpw52ru4d" path="res://assets/music/2ndsection.mp3" id="6_xmkl8"]
-[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="7_3h2yv"]
-[ext_resource type="AudioStream" uid="uid://dwup5payo57jr" path="res://assets/music/2ndsectionubergang.mp3" id="8_j4qyk"]
-[ext_resource type="AudioStream" uid="uid://x4nk0thjapp1" path="res://assets/music/3rdsection.mp3" id="9_j6dw4"]
-[ext_resource type="PackedScene" uid="uid://c1rksi0f440ri" path="res://scenes/performence_vulkan.tscn" id="10_f4dbe"]
-
-[sub_resource type="GDScript" id="GDScript_fjc6c"]
-script/source = "extends Node2D
-
-@export var level:  PackedScene
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_quit_button_pressed():
-	get_tree().quit()
-	
-
-
-func _on_restart_button_pressed():
-	get_tree().change_scene_to_packed(level)
-	
-"
-
-[sub_resource type="PackedScene" id="PackedScene_c1xma"]
-_bundled = {
-"conn_count": 2,
-"conns": PackedInt32Array(5, 0, 27, 26, 2, 0, 0, 6, 0, 27, 28, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("GameOverScreen", "script", "level", "Node2D", "PanelContainer", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "MarginContainer", "layout_mode", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom", "VBoxContainer_rows", "VBoxContainer", "title", "text", "horizontal_alignment", "Label", "RestartButton", "Button", "QuitButton", "CanvasLayer", "_on_restart_button_pressed", "pressed", "_on_quit_button_pressed"),
-"node_count": 8,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 5, 5, 2, 6, 3, 7, 3, 8, 4, 9, 4, 0, 1, 0, 10, 10, -1, 5, 11, 4, 12, 5, 13, 5, 14, 5, 15, 5, 0, 2, 0, 17, 16, -1, 1, 11, 4, 0, 3, 0, 21, 18, -1, 3, 11, 4, 19, 6, 20, 7, 0, 3, 0, 23, 22, -1, 2, 11, 4, 19, 8, 0, 3, 0, 23, 24, -1, 2, 11, 4, 19, 9, 0, 0, 0, 25, 25, -1, 0, 0),
-"variants": [SubResource("GDScript_fjc6c"), null, 15, 1.0, 2, 40, "Game Over", 1, "Restart", "Quit
-"],
-"version": 3
-}
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_6f70y"]
+[ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="2_bqsn7"]
+[ext_resource type="Script" path="res://scripts/terrain.gd" id="3_un0gm"]
+[ext_resource type="PackedScene" uid="uid://53aspcqwurhf" path="res://scenes/death_plane.tscn" id="4_kg3b4"]
+[ext_resource type="AudioStream" uid="uid://d3hjl272o23a8" path="res://assets/music/1stsectionubergang.mp3" id="5_33chl"]
+[ext_resource type="AudioStream" uid="uid://cpcmpw52ru4d" path="res://assets/music/2ndsection.mp3" id="6_iq1qx"]
+[ext_resource type="AudioStream" uid="uid://dwup5payo57jr" path="res://assets/music/2ndsectionubergang.mp3" id="7_rl8a6"]
+[ext_resource type="AudioStream" uid="uid://x4nk0thjapp1" path="res://assets/music/3rdsection.mp3" id="8_spgpk"]
+[ext_resource type="PackedScene" uid="uid://c1rksi0f440ri" path="res://scenes/performence_vulkan.tscn" id="9_2n3i8"]
 
 [sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_babyf"]
 graph_data = {
-"connections": [[1, 0, 7, 0], [10, 0, 7, 2], [10, 0, 7, 3], [12, 0, 13, 0], [13, 0, 15, 0], [14, 0, 12, 0], [15, 0, 4, 0], [3, 0, 7, 1], [7, 0, 8, 0], [8, 0, 15, 1]],
+"connections": [[8, 0, 15, 1], [7, 0, 8, 0], [3, 0, 7, 1], [15, 0, 4, 0], [13, 0, 15, 0], [12, 0, 13, 0], [10, 0, 7, 2], [10, 0, 7, 3], [14, 0, 12, 0], [1, 0, 7, 0]],
 "nodes": {
 "1": {
 "gui_position": Vector2(330, 160),
@@ -117,7 +77,7 @@ height = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c18we"]
 render_priority = 0
-shader = ExtResource("6_7maba")
+shader = ExtResource("2_bqsn7")
 shader_parameter/u_transition_mask = null
 shader_parameter/u_block_local_transform = null
 shader_parameter/color_ramp = SubResource("GradientTexture2D_4xjgf")
@@ -144,35 +104,7 @@ background_mode = 2
 sky = SubResource("Sky_fqwg8")
 
 [node name="Arena" type="Node3D"]
-script = ExtResource("1_1hq8d")
-game_over = SubResource("PackedScene_c1xma")
-
-[node name="Player" type="Node3D" parent="."]
-
-[node name="PlayerSpawner1" parent="Player" node_paths=PackedStringArray("projectile_root") instance=ExtResource("2_fxpc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 0)
-projectile_root = NodePath("../../ProjectileRoot")
-
-[node name="PlayerSpawner2" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, -15)
-
-[node name="PlayerSpawner3" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15, 2, 0)
-
-[node name="PlayerSpawner4" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0, 2, 15)
-
-[node name="PlayerSpawner5" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 2, -10)
-
-[node name="PlayerSpawner6" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 10, 2, -10)
-
-[node name="PlayerSpawner7" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 10, 2, 10)
-
-[node name="PlayerSpawner8" parent="Player" instance=ExtResource("2_fxpc2")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 10)
+script = ExtResource("1_6f70y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.346046, 0.930479, -0.120253, -0.430004, 0.271209, 0.861129, 0.833876, -0.246281, 0.493961, 0, 14.4751, 11.7942)
@@ -187,7 +119,7 @@ material = SubResource("ShaderMaterial_c18we")
 mesh_block_size = 32
 full_load_mode_enabled = true
 threaded_update_enabled = true
-script = ExtResource("4_ibc45")
+script = ExtResource("3_un0gm")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="VoxelLodTerrain"]
 view_distance = 512
@@ -200,7 +132,7 @@ view_distance = 512
 transform = Transform3D(1, 0, 0, 0, 0.675397, 0.737454, 0, -0.737454, 0.675397, 0, 10.4322, 22.3661)
 current = true
 
-[node name="DeathPlane" parent="." instance=ExtResource("7_3h2yv")]
+[node name="DeathPlane" parent="." instance=ExtResource("4_kg3b4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04923, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -211,21 +143,21 @@ wait_time = 5.0
 autostart = true
 
 [node name="AudioStreamPlayer3D_1" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_256qc")
+stream = ExtResource("5_33chl")
 
 [node name="AudioStreamPlayer3D_2" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_xmkl8")
+stream = ExtResource("6_iq1qx")
 
 [node name="soundtimer" type="Timer" parent="AudioStreamPlayer3D_2"]
 wait_time = 180.0
 
 [node name="AudioStreamPlayer3D_3" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("8_j4qyk")
+stream = ExtResource("7_rl8a6")
 
 [node name="AudioStreamPlayer3D_4" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("9_j6dw4")
+stream = ExtResource("8_spgpk")
 
-[node name="performence_vulkan2" parent="." instance=ExtResource("10_f4dbe")]
+[node name="performence_vulkan2" parent="." instance=ExtResource("9_2n3i8")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -1071.95, -16.5553, 83.4474)
 
 [connection signal="timeout" from="ItemSpawnerTimer" to="." method="_on_item_spawner_timer_timeout"]

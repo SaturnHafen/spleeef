@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="Spleeef"
-run/main_scene="res://scenes/player_selection.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Voxels="*res://scripts/voxels.gd"
-GameOverData="*res://scripts/game_over_data.gd"
 
 [input]
 
@@ -624,3 +623,7 @@ player_7_switch={
 [physics]
 
 common/physics_ticks_per_second=120
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

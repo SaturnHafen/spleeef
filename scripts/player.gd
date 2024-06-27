@@ -1,17 +1,39 @@
+class_name Player
 extends CharacterBody3D
 
 const SPEED = 5.0
+const PITCH_SPEED = 2
+const YAW_SPEED = 2
 const JUMP_VELOCITY = 4.5
 
 const KNOCKBACK_DECAY = 0.9
 
-const aim_directions = [-45, -30, 0, 15, 30, 45]
-var aim_direction_index = 2
-
-signal death(player: Node3D)
+signal death(player: Player)
+signal player_ready(player: Player)
+signal player_not_ready(player: Player)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var player_view: PlayerView
+
+var game: Game
+
+var team: Team
+var team_index = 0
+
+enum State {
+	CHARACTER_SELECTION,
+	TEAM_SELECTION,
+	READY,
+	PLAYING,
+	DEAD,
+}
+var state: State
+
+@export var character_scenes: Array[PackedScene] = []
+var character: Node3D = null
+var character_index = 0
 
 @export_enum(
 	"Player 1",
@@ -22,27 +44,138 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 	"Player 6",
 	"Player 7",
 	"Player 8",
-) var player: int = 0
+) var id: int = 0
 @export var aim_speed: Vector2 = Vector2(0.07, 4)
 
 #nur für default gun
 @export var projectile_root: Marker3D
 
 var knockback: Vector3 = Vector3.ZERO
-var died = false
 var jumped = false
 
 func _ready():
 	$Mainhand/DefaultGun.projectile_root = projectile_root
 	$Mainhand/DefaultGun.player = self
+	switch_to_character_selection()
 
-func die():
-	died = true
-	$AnimationTree.set("parameters/trigger_death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	await get_tree().create_timer(3.0).timeout
-	get_parent().remove_child(self)
-	queue_free()
-	death.emit(self)
+func is_ready():
+	return state == State.READY
+
+var selection_offset_cooldown = 0
+
+func _process(delta):
+	if selection_offset_cooldown > 0:
+		selection_offset_cooldown -= delta
+	update_hud()
+	match state:
+		State.CHARACTER_SELECTION:
+			process_character_selection()
+		State.TEAM_SELECTION:
+			process_team_selection()
+		State.READY:
+			process_ready()
+		State.PLAYING:
+			process_playing()
+
+func get_weapon() -> Weapon:
+	if len($Mainhand.get_children()) > 0:
+		return $Mainhand.get_child(0)
+	return null
+
+func update_hud():
+	player_view.set_team_name(team.name if team else "")
+	var weapon = get_weapon()
+	player_view.set_weapon_name(weapon.name if weapon else "")
+	player_view.set_ammo(str(weapon.ammo) if weapon else "")
+
+func proceed():
+	return Input.is_action_just_pressed("player_%d_action" % id)
+
+func go_back():
+	return Input.is_action_just_pressed("player_%d_jump" % id)
+
+func selection_offset():
+	if selection_offset_cooldown > 0:
+		return 0
+	var offset = int(round(Input.get_axis(
+			"player_%d_left" % id, 
+			"player_%d_right" % id)))
+	if offset != 0:
+		selection_offset_cooldown = 0.5
+	return offset
+
+func show_keys_for(task: String):
+	player_view.set_info("%s with the left stick\nConfirm with right trigger\nGo back with left trigger" % task)
+
+func switch_to_character_selection():
+	state = State.CHARACTER_SELECTION
+	show_character()
+	show_keys_for("Choose a character")
+
+func process_character_selection():
+	if go_back():
+		game.player_left(self)
+		return
+	if proceed():
+		switch_to_team_selection()
+		return
+	var offset = selection_offset()
+	if offset == 0:
+		return
+	character_index = posmod(character_index + offset, len(character_scenes))
+	show_character()
+
+func switch_to_team_selection():
+	state = State.TEAM_SELECTION
+	show_keys_for("Choose a team")
+
+func show_character():
+	if character != null:
+		remove_child(character)
+		character.free()
+	character = character_scenes[character_index].instantiate()
+	add_child(character)
+	$AnimationTree.root_node = self.get_path()
+	character.name = "Armature"
+
+func process_team_selection():
+	if go_back():
+		switch_to_character_selection()
+		return
+	if proceed():
+		switch_to_ready()
+		return
+	var offset = selection_offset()
+	team_index = posmod(team_index + offset, len(game.teams))
+	team = game.teams[team_index]
+
+func switch_to_ready():
+	state = State.READY
+	player_ready.emit(self)
+	player_view.set_info("Ready! Waiting for other players\nGo back with left trigger")
+
+func process_ready():
+	if go_back():
+		player_not_ready.emit(self)
+		switch_to_team_selection()
+		return
+
+func switch_to_playing():
+	state = State.PLAYING
+	player_view.set_info("")
+	$CameraTransform.remote_path = player_view.get_camera().get_path()
+
+func process_playing():
+	if Input.is_action_just_pressed("player_%d_action" % id):
+		try_shoot()
+
+	if Input.is_action_just_pressed("player_%d_switch" % id):
+		switch_hands()
+
+func try_shoot():
+	var weapon = get_weapon()
+	if weapon:
+		weapon.try_shoot()
 
 func switch_hands():
 	var main = $Mainhand.get_child(0)
@@ -54,20 +187,12 @@ func switch_hands():
 	$Offhand.add_child(main)
 	$Mainhand.add_child(off)
 
-func _process(delta):
-	if died:
-		return
-	if Input.is_action_just_pressed("player_%d_action" % player):
-		if len($Mainhand.get_children()) > 0:
-			var item = $Mainhand.get_child(0)
-			item.try_shoot()
-
-	if Input.is_action_just_pressed("player_%d_switch" % player):
-		switch_hands()
-
 func _physics_process(delta):
-	if died:
-		return
+	match state:
+		State.PLAYING:
+			physics_process_playing(delta)
+
+func physics_process_playing(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -76,7 +201,7 @@ func _physics_process(delta):
 		jumped = false
 
 	# Handle jump.
-	if Input.is_action_just_pressed("player_%d_jump" % player) and (is_on_floor() or not jumped):
+	if Input.is_action_just_pressed("player_%d_jump" % id) and (is_on_floor() or not jumped):
 		velocity.y = JUMP_VELOCITY
 		if not is_on_floor():
 			jumped = true
@@ -86,43 +211,47 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	var input_dir = Input.get_vector(
-		"player_%d_left" % player, 
-		"player_%d_right" % player, 
-		"player_%d_forward" % player, 
-		"player_%d_back" % player)
+		"player_%d_left" % id, 
+		"player_%d_right" % id, 
+		"player_%d_forward" % id, 
+		"player_%d_back" % id)
 	
-	var aim_dir = Input.get_vector(
-		"player_%d_aim_left" % player, 
-		"player_%d_aim_right" % player, 
-		"player_%d_aim_forward" % player, 
-		"player_%d_aim_back" % player)
+	var aim_dir = -Input.get_vector(
+		"player_%d_aim_left" % id, 
+		"player_%d_aim_right" % id, 
+		"player_%d_aim_forward" % id, 
+		"player_%d_aim_back" % id)
 	
-	if aim_dir:
-		rotation.y = -aim_dir.angle()
-	
-	if Input.is_action_just_pressed("player_%d_aim_up" % player) and aim_direction_index < len(aim_directions) - 1:
-		aim_direction_index += 1
-	if Input.is_action_just_pressed("player_%d_aim_down" % player) and aim_direction_index > 0:
-		aim_direction_index -= 1
-	
-	$Mainhand.rotation_degrees.z = aim_directions[aim_direction_index]
+	rotation.y += aim_dir.x * PITCH_SPEED * delta
+	$Mainhand.rotation.z = clamp($Mainhand.rotation.z + aim_dir.y * YAW_SPEED * delta, -PI, PI)
 	$Mainhand.global_position = get_bone_pos("mixamorig_RightHandIndex1")
 	$Offhand.global_position = get_bone_pos("mixamorig_LeftUpLeg")
+	$CameraTransform.global_position = get_bone_pos("mixamorig_Head", Vector3.FORWARD * 100)
+	$CameraTransform.rotation.x = $Mainhand.rotation.z
 	
-	velocity.x = input_dir.x * SPEED
-	velocity.z = input_dir.y * SPEED
+	var input_velocity = input_dir.rotated(-rotation.y)
+	velocity.x = input_velocity.x * SPEED
+	velocity.z = input_velocity.y * SPEED
 	
 	velocity += knockback * Vector3(1, 0.08, 1)
 	knockback *= KNOCKBACK_DECAY
-	var rotated_velocity = Vector2(velocity.z, velocity.x).rotated(-rotation.y)
-	if rotated_velocity.length() > 1:
-		rotated_velocity = rotated_velocity.normalized()
-	$AnimationTree.set("parameters/running/blend_position", rotated_velocity)
-	$AnimationTree.set("parameters/jump/blend_position", rotated_velocity)
+	var animation_velocity = input_dir * SPEED
+	if animation_velocity.length() > 1:
+		animation_velocity = animation_velocity.normalized()
+	$AnimationTree.set("parameters/running/blend_position", animation_velocity)
+	$AnimationTree.set("parameters/jump/blend_position", animation_velocity)
 
 	move_and_slide()
 
-func get_bone_pos(bone_name: String) -> Vector3:
+func die():
+	state = State.DEAD
+	$AnimationTree.set("parameters/trigger_death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer(3.0).timeout
+	get_parent().remove_child(self)
+	queue_free()
+	death.emit(self)
+
+func get_bone_pos(bone_name: String, offset = Vector3.ZERO) -> Vector3:
 	var skeleton: Skeleton3D = $Armature/Skeleton3D
 	var bone_transform = skeleton.get_bone_global_pose(skeleton.find_bone(bone_name))
-	return (skeleton.global_transform * bone_transform).origin
+	return skeleton.global_transform * (bone_transform.origin + offset)
