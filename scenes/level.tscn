@@ -182,64 +182,46 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [node name="ItemSpawner1" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 5, 0)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner2" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5, 10)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner3" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, 0)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner4" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 5, -10)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner5" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 7, 5, 7)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner6" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7, 5, 7)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner7" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 5, -7)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner8" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 7, 5, -7)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("4_bjnwy"), ExtResource("5_ycclx"), ExtResource("6_evic2")])
 
 [node name="ItemSpawner9" parent="Items" node_paths=PackedStringArray("projectile_root") instance=ExtResource("3_j2egy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-low_timeout = null
-high_timeout = null
 projectile_root = NodePath("../../ProjectileRoot")
 items = Array[PackedScene]([ExtResource("5_ycclx"), ExtResource("6_evic2")])
 

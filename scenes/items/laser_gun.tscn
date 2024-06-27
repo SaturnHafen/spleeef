@@ -10,6 +10,9 @@
 script = ExtResource("1_6myr7")
 cooldown = 3.0
 projectile = ExtResource("2_ti1nj")
+high_ammo = 4
+high_strength = 2.0
+low_strength = 0.5
 
 [node name="AudioStreamPlayer3D" parent="." index="1"]
 stream = ExtResource("3_k1k3g")

@@ -3,7 +3,7 @@ extends RigidBody3D
 var graph = preload("res://resources/sdfs/noisy_sphere.tres")
 
 @export var knockback: float = 20
-@export var radius = 7
+@export var radius = 5
 
 func on_timer_timeout():
 	Voxels.do_graph(graph, global_position, radius * Vector3.ONE)
@@ -12,7 +12,7 @@ func on_timer_timeout():
 	$AudioStreamPlayer3D.play()
 	
 	var explosion = preload("res://scenes/explosion.tscn").instantiate()
-	explosion.set_radius(radius)
+	explosion.set_radius(radius / 3)
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
 	

@@ -18,7 +18,7 @@ func explode():
 			body.knockback += delta.normalized() / delta.length() * knockback
 	
 	var explosion = preload("res://scenes/explosion.tscn").instantiate()
-	explosion.set_radius(radius)
+	explosion.set_radius(radius / 3)
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
 	queue_free()

@@ -33,8 +33,11 @@ func _get_configuration_warnings():
 func _on_respawn_timer_timeout():
 	if items:
 		var drop = dropper.instantiate()
-		var item = items.pick_random().instantiate()
+		var item: Weapon = items.pick_random().instantiate()
 		
+		var ammo = randi_range(item.low_ammo, item.high_ammo)
+		item.ammo = ammo
+		item.starting_ammo = ammo
 		item.projectile_root = projectile_root
 		
 		add_child(drop)
