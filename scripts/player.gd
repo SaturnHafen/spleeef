@@ -235,7 +235,7 @@ func physics_process_playing(delta):
 		"player_%d_aim_back" % id)
 	
 	rotation.y += aim_dir.x * PITCH_SPEED * delta
-	$Mainhand.rotation.z = clamp($Mainhand.rotation.z + aim_dir.y * YAW_SPEED * delta, -PI, PI)
+	$Mainhand.rotation.z = clamp($Mainhand.rotation.z + aim_dir.y * YAW_SPEED * delta, -PI / 2, PI / 2)
 	$Mainhand.global_position = get_bone_pos("mixamorig_RightHandIndex1")
 	$Offhand.global_position = get_bone_pos("mixamorig_LeftUpLeg")
 	$CameraTransform.global_position = get_bone_pos("mixamorig_Head", Vector3.FORWARD * 100)
