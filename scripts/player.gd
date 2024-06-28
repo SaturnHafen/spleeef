@@ -266,6 +266,8 @@ func physics_process_playing(delta):
 
 func die():
 	state = State.DEAD
+	player_view.set_info("You died!")
+	player_view.remove_player()
 	$AnimationTree.set("parameters/trigger_death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	death.emit(self)
 	await get_tree().create_timer(3.0).timeout

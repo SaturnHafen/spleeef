@@ -5,6 +5,10 @@ func get_camera() -> Camera3D:
 	$SubViewportContainer/SubViewport.add_child(camera)
 	return camera
 
+func remove_camera():
+	var viewport = $SubViewportContainer/SubViewport
+	viewport.remove_child(viewport.get_child(0))
+
 func _ready():
 	update_font_size()
 
