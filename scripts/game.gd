@@ -52,6 +52,7 @@ func switch_to_game_over():
 	status.text = "Press right trigger to play again"
 	$UI/GameOver.visible = true
 	var game_over = $UI/GameOver/Label
+	game_over.clear()
 	game_over.bbcode_enabled = true
 	game_over.text = "[center]"
 	if not team_won:
