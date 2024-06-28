@@ -1,4 +1,4 @@
-class_name Game extends VBoxContainer
+class_name Game extends Control
 
 enum State {
 	PLAYER_SELECTION,
@@ -13,7 +13,7 @@ var arena: Node3D = null
 var empty_player_view: PlayerView
 
 var max_num_players = 8
-@onready var status = $StatusPanel/Status
+@onready var status = $UI/StatusPanel/Status
 
 var team_won: Team = null
 var teams: Array[Team] = [
@@ -31,7 +31,7 @@ func _ready():
 	switch_to_player_selection()
 
 func clear_players():
-	for child in $PlayerGrid.get_children():
+	for child in $UI/PlayerGrid.get_children():
 		child.queue_free()
 	players = []
 
@@ -39,8 +39,8 @@ func switch_to_player_selection():
 	state = State.PLAYER_SELECTION
 	clear_players()
 	add_empty_player_view()
-	$PlayerGrid.visible = true
-	$GameOver.visible = false
+	$UI/PlayerGrid.visible = true
+	$UI/GameOver.visible = false
 
 func switch_to_game_over():
 	state = State.GAME_OVER
@@ -48,10 +48,10 @@ func switch_to_game_over():
 		arena.queue_free()
 		arena = null
 	clear_players()
-	$PlayerGrid.visible = false
+	$UI/PlayerGrid.visible = false
 	status.text = "Press right trigger to play again"
-	$GameOver.visible = true
-	var game_over = $GameOver/Label
+	$UI/GameOver.visible = true
+	var game_over = $UI/GameOver/Label
 	game_over.bbcode_enabled = true
 	game_over.text = "[center]"
 	if not team_won:
@@ -67,7 +67,7 @@ const player_view_scene = preload("res://scenes/player_view.tscn")
 
 func add_empty_player_view():
 	empty_player_view = player_view_scene.instantiate()
-	$PlayerGrid.add_child(empty_player_view)
+	$UI/PlayerGrid.add_child(empty_player_view)
 	empty_player_view.set_info("Press right trigger to join")
 
 func _process(delta):
@@ -183,6 +183,7 @@ func switch_to_playing():
 	clear_ready_timer()
 	arena = preload("res://scenes/arena.tscn").instantiate()
 	add_child(arena)
+	move_child(arena, 0)
 	empty_player_view.queue_free()
 	assign_team_num_players()
 	for player in players:

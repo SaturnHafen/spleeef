@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_i3iti"]
 [ext_resource type="Script" path="res://scripts/player_grid.gd" id="1_pmch3"]
 
-[node name="Game" type="VBoxContainer"]
+[node name="Game" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,11 +12,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i3iti")
 
-[node name="StatusPanel" type="Panel" parent="."]
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+color = Color(0, 0, 0, 1)
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusPanel" type="Panel" parent="UI"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Status" type="RichTextLabel" parent="StatusPanel"]
+[node name="Status" type="RichTextLabel" parent="UI/StatusPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,18 +48,18 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 
-[node name="PlayerGrid" type="GridContainer" parent="."]
+[node name="PlayerGrid" type="GridContainer" parent="UI"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_pmch3")
 columns_for_child_count = Array[int]([1, 1, 2, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8])
 
-[node name="GameOver" type="VBoxContainer" parent="."]
+[node name="GameOver" type="VBoxContainer" parent="UI"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="RichTextLabel" parent="GameOver"]
+[node name="Label" type="RichTextLabel" parent="UI/GameOver"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/normal_font_size = 100
@@ -49,4 +68,4 @@ text = "[center]Test"
 fit_content = true
 scroll_active = false
 
-[connection signal="child_order_changed" from="PlayerGrid" to="PlayerGrid" method="_on_children_changed"]
+[connection signal="child_order_changed" from="UI/PlayerGrid" to="UI/PlayerGrid" method="_on_children_changed"]
