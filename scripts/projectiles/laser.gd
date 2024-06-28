@@ -2,8 +2,9 @@ extends Area3D
 
 const graph = preload("res://resources/sdfs/laser.tres")
 const length = 20.0
-var radius = 0.5
-const knockback = 10
+
+var radius: float
+var knockback: float
 
 func _ready():
 	# fix random rotation toggling at spawn

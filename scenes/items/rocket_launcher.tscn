@@ -1,19 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://de3qda5bsv0xr"]
+[gd_scene load_steps=10 format=3 uid="uid://de3qda5bsv0xr"]
 
 [ext_resource type="Script" path="res://scripts/items/rocket_launcher.gd" id="1_6s2ip"]
 [ext_resource type="PackedScene" uid="uid://bvmgmeiceapcb" path="res://scenes/items/weapon.tscn" id="1_nun3e"]
 [ext_resource type="PackedScene" uid="uid://btt7xb0i2gc8i" path="res://assets/weapons/blasterA.glb" id="2_vgowh"]
 [ext_resource type="PackedScene" uid="uid://c0kston1xdyn3" path="res://scenes/projectiles/rocket.tscn" id="2_vihj3"]
+[ext_resource type="Script" path="res://scripts/variation.gd" id="3_pgoy6"]
 [ext_resource type="AudioStream" uid="uid://3eopqw4w0fn3" path="res://assets/soundeffects/kanone.mp3" id="4_yjnl1"]
 
-[node name="Weapon" instance=ExtResource("1_nun3e")]
+[sub_resource type="Resource" id="Resource_thked"]
+script = ExtResource("3_pgoy6")
+name = "Light"
+ammo = 5
+radius = 4.0
+knockback = 0.0
+cooldown = 1.0
+
+[sub_resource type="Resource" id="Resource_nqwnq"]
+script = ExtResource("3_pgoy6")
+name = "Medium"
+ammo = 3
+radius = 7.0
+knockback = 0.0
+cooldown = 3.0
+
+[sub_resource type="Resource" id="Resource_m0jfi"]
+script = ExtResource("3_pgoy6")
+name = "Heavy"
+ammo = 2
+radius = 10.0
+knockback = 0.0
+cooldown = 5.0
+
+[node name="RocketLauncher" instance=ExtResource("1_nun3e")]
 script = ExtResource("1_6s2ip")
-ammo = 1
-speed = 100
+variations = Array[ExtResource("3_pgoy6")]([SubResource("Resource_thked"), SubResource("Resource_nqwnq"), SubResource("Resource_m0jfi")])
 projectile = ExtResource("2_vihj3")
-low_ammo = 1
-high_ammo = 5
-high_strength = 100.0
 
 [node name="AudioStreamPlayer3D" parent="." index="1"]
 stream = ExtResource("4_yjnl1")

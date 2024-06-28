@@ -1,4 +1,7 @@
 extends Weapon
 
+func base_name():
+	return "Laser Gun"
+
 func _shoot():
-	var _instance = spawn_projectile()
+	spawn_projectile()

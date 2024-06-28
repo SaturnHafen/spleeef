@@ -1,23 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://diqqt441y74sf"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/default_projectiles.gd" id="1_2wr1f"]
-[ext_resource type="PackedScene" uid="uid://b8i85082anuwy" path="res://assets/foamBulletB-low.glb" id="2_7d8df"]
+[ext_resource type="Script" path="res://scripts/projectiles/bullet.gd" id="1_rhqbf"]
+[ext_resource type="PackedScene" uid="uid://b8i85082anuwy" path="res://assets/weapons/foamBulletB-low.glb" id="2_ekka3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dijvc"]
 height = 2.8
 
-[node name="DefaultProjectiles" type="RigidBody3D"]
+[node name="Bullet" type="RigidBody3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mass = 0.28
 max_contacts_reported = 10
 contact_monitor = true
-script = ExtResource("1_2wr1f")
+script = ExtResource("1_rhqbf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_dijvc")
 
-[node name="bullet" parent="." instance=ExtResource("2_7d8df")]
+[node name="bullet" parent="." instance=ExtResource("2_ekka3")]
 transform = Transform3D(-2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 0, 5, 0, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

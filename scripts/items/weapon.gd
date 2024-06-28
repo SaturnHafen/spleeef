@@ -2,32 +2,38 @@ class_name Weapon
 
 extends Node3D
 
-@export_range(0.1, 20, 0.1) var cooldown: float = 2
-@export_range(-1, 100) var ammo: int = 2
-@export_range(1, 100_000) var speed: int
+@export var variations: Array[Variation] = []
+
+var variation: Variation
+var ammo: int
 @export var projectile: PackedScene
 
 @export var projectile_root: Node3D
-@export var player: Node3D
+var player: Node3D
 
-@export_category("Knobs for the varying strengths")
-@export_range(1, 100) var low_ammo: int = 2
-@export_range(1, 100) var high_ammo: int = 2
-@export_range(0.1, 100) var high_strength: float = 10
-@export_range(0.1, 100) var low_strength: float = 10
+func base_name():
+	return "Weapon"
 
-var starting_ammo = -1
+func display_name():
+	if variation.name != "":
+		return "%s %s" % [variation.name, base_name()]
+	return base_name()
+
+func display_ammo():
+	if ammo < 0:
+		return "∞/∞"
+	return "%d/%d" % [ammo, variation.ammo]
+
+func _ready():
+	variation = variations.pick_random()
+	ammo = variation.ammo
 
 func spawn_projectile() -> Node3D:
 	var instance = projectile.instantiate()
-	
-	if starting_ammo != -1:
-		instance.radius = remap(starting_ammo, low_ammo, high_ammo, high_strength, low_strength)
-	
-	var direction = global_transform.basis.x
-	
+	instance.radius = variation.radius
+	instance.knockback = variation.knockback
 	projectile_root.add_child(instance)
-	
+	var direction = global_transform.basis.x
 	instance.global_rotation = global_rotation
 	instance.global_position = global_position + direction
 	
@@ -49,7 +55,7 @@ func try_shoot():
 	if ammo == 0:
 		queue_free()
 
-	$Cooldown.start(cooldown)
+	$Cooldown.start(variation.cooldown)
 
 func _shoot():
 	pass

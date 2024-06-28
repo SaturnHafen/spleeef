@@ -1,14 +1,13 @@
 extends RigidBody3D
 
-var graph = preload("res://resources/sdfs/noisy_sphere.tres")
+const graph = preload("res://resources/sdfs/noisy_sphere.tres")
 
-@export var knockback: float = 20
-@export var radius = 10
+var radius: float
+var knockback: float
 
 func explode():
 	Voxels.do_graph(graph, global_position, radius * Vector3.ONE)
 	
-	#sound
 	$AudioStreamPlayer3D.play()
 	
 	var collisions = $KnockbackArea.get_overlapping_bodies()

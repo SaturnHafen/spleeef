@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4yumdc3ig2i6" path="res://scenes/item_spawner/item_spawner.tscn" id="1_uev58"]
 [ext_resource type="PackedScene" uid="uid://7jtyxjl0lnvh" path="res://scenes/items/laser_gun.tscn" id="2_trqya"]
-[ext_resource type="PackedScene" uid="uid://cd7xolv2pod3d" path="res://scenes/items/default_gun.tscn" id="3_rdqfq"]
+[ext_resource type="PackedScene" uid="uid://cd7xolv2pod3d" path="res://scenes/items/pistol.tscn" id="3_rdqfq"]
 [ext_resource type="PackedScene" uid="uid://cx85uvy6y4qwm" path="res://scenes/items/grenade_launcher.tscn" id="4_s5pnt"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_66j7t"]

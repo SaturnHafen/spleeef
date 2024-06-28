@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd7xolv2pod3d"]
+
+[ext_resource type="PackedScene" uid="uid://bvmgmeiceapcb" path="res://scenes/items/weapon.tscn" id="1_ovl2a"]
+[ext_resource type="Script" path="res://scripts/items/pistol.gd" id="2_58be2"]
+[ext_resource type="PackedScene" uid="uid://diqqt441y74sf" path="res://scenes/projectiles/bullet.tscn" id="3_842ro"]
+[ext_resource type="Script" path="res://scripts/variation.gd" id="3_n1mg7"]
+[ext_resource type="AudioStream" uid="uid://btqh5em3a7iwt" path="res://assets/soundeffects/shoot3.mp3" id="4_iwnir"]
+[ext_resource type="PackedScene" uid="uid://cthutvj3yrrfq" path="res://assets/weapons/blasterH.glb" id="5_jytbv"]
+
+[sub_resource type="Resource" id="Resource_ypt01"]
+script = ExtResource("3_n1mg7")
+name = ""
+ammo = -1
+radius = 1.0
+knockback = 5.0
+cooldown = 0.5
+
+[node name="Pistol" instance=ExtResource("1_ovl2a")]
+script = ExtResource("2_58be2")
+variations = Array[ExtResource("3_n1mg7")]([SubResource("Resource_ypt01")])
+projectile = ExtResource("3_842ro")
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 0.5
+
+[node name="AudioStreamPlayer3D" parent="." index="1"]
+stream = ExtResource("4_iwnir")
+
+[node name="blaster" parent="." index="2" instance=ExtResource("5_jytbv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

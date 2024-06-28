@@ -1,18 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx85uvy6y4qwm"]
+[gd_scene load_steps=9 format=3 uid="uid://cx85uvy6y4qwm"]
 
 [ext_resource type="Script" path="res://scripts/items/grenade_launcher.gd" id="1_7hwic"]
 [ext_resource type="PackedScene" uid="uid://bvmgmeiceapcb" path="res://scenes/items/weapon.tscn" id="1_wr1ny"]
 [ext_resource type="PackedScene" uid="uid://opndyfudaexl" path="res://scenes/projectiles/grenade.tscn" id="2_ncbs2"]
+[ext_resource type="Script" path="res://scripts/variation.gd" id="3_fo8pa"]
 [ext_resource type="PackedScene" uid="uid://bfemimohp2pwx" path="res://assets/weapons/blasterR.glb" id="3_q4a3d"]
 
-[node name="Weapon" instance=ExtResource("1_wr1ny")]
-script = ExtResource("1_7hwic")
+[sub_resource type="Resource" id="Resource_dkhdd"]
+script = ExtResource("3_fo8pa")
+name = "Light"
+ammo = 10
+radius = 4.0
+knockback = 1.0
+cooldown = 0.5
+
+[sub_resource type="Resource" id="Resource_rugpi"]
+script = ExtResource("3_fo8pa")
+name = "Medium"
+ammo = 6
+radius = 7.0
+knockback = 3.0
+cooldown = 1.0
+
+[sub_resource type="Resource" id="Resource_dy23x"]
+script = ExtResource("3_fo8pa")
+name = "Heavy"
 ammo = 3
-speed = 2000
+radius = 10.0
+knockback = 5.0
+cooldown = 3.0
+
+[node name="GrenadeLauncher" instance=ExtResource("1_wr1ny")]
+script = ExtResource("1_7hwic")
+variations = Array[ExtResource("3_fo8pa")]([SubResource("Resource_dkhdd"), SubResource("Resource_rugpi"), SubResource("Resource_dy23x")])
 projectile = ExtResource("2_ncbs2")
-low_ammo = 3
-high_ammo = 10
-low_strength = 5.0
 
 [node name="blaster" parent="." index="2" instance=ExtResource("3_q4a3d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
