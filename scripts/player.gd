@@ -128,6 +128,7 @@ func process_character_selection():
 
 func switch_to_team_selection():
 	state = State.TEAM_SELECTION
+	show_team()
 	show_keys_for("Choose a team")
 
 func get_mesh_layer():
@@ -157,7 +158,13 @@ func process_team_selection():
 		return
 	var offset = selection_offset()
 	team_index = posmod(team_index + offset, len(game.teams))
+	show_team()
+
+func show_team():
 	team = game.teams[team_index]
+	if not $Halo.material_override:
+		$Halo.material_override = $Halo.get_active_material(0).duplicate()
+	$Halo.material_override.albedo_color = team.color
 
 func switch_to_ready():
 	state = State.READY

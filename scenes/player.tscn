@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ds50rurer35xb"]
+[gd_scene load_steps=30 format=3 uid="uid://ds50rurer35xb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nlncl"]
 [ext_resource type="PackedScene" uid="uid://c5cy7jmsei3ov" path="res://scenes/characters/abe.tscn" id="2_148ro"]
@@ -96,6 +96,13 @@ nodes/trigger_jump/node = SubResource("AnimationNodeOneShot_61jak")
 nodes/trigger_jump/position = Vector2(430, 200)
 node_connections = [&"output", 0, &"trigger_death", &"trigger_death", 0, &"trigger_jump", &"trigger_death", 1, &"death", &"trigger_jump", 0, &"running", &"trigger_jump", 1, &"jump"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emjok"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_slmhd"]
+material = SubResource("StandardMaterial3D_emjok")
+inner_radius = 0.4
+outer_radius = 0.35
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_nlncl")
 character_scenes = Array[PackedScene]([ExtResource("2_148ro"), ExtResource("3_vvk67"), ExtResource("4_rbgvc"), ExtResource("5_t3p1w"), ExtResource("6_2h6y0"), ExtResource("7_hobpm"), ExtResource("8_71gqc")])
@@ -129,3 +136,7 @@ parameters/trigger_jump/request = 0
 
 [node name="CameraTransform" type="RemoteTransform3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Halo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24762, 0)
+mesh = SubResource("TorusMesh_slmhd")
