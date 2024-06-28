@@ -130,13 +130,14 @@ func switch_to_team_selection():
 	show_keys_for("Choose a team")
 
 func show_character():
+	$AnimationTree.active = false
 	if character != null:
 		remove_child(character)
 		character.free()
 	character = character_scenes[character_index].instantiate()
 	add_child(character)
-	$AnimationTree.root_node = self.get_path()
 	character.name = "Armature"
+	$AnimationTree.active = true
 
 func process_team_selection():
 	if go_back():
