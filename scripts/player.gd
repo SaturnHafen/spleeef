@@ -259,10 +259,10 @@ func physics_process_playing(delta):
 func die():
 	state = State.DEAD
 	$AnimationTree.set("parameters/trigger_death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	death.emit(self)
 	await get_tree().create_timer(3.0).timeout
 	get_parent().remove_child(self)
 	queue_free()
-	death.emit(self)
 
 func get_bone_pos(bone_name: String, offset = Vector3.ZERO) -> Vector3:
 	var skeleton: Skeleton3D = $Armature/Skeleton3D
