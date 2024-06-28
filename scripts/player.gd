@@ -241,13 +241,14 @@ func physics_process_playing(delta):
 	$CameraTransform.global_position = get_bone_pos("mixamorig_Head", Vector3.FORWARD * 100)
 	$CameraTransform.rotation.x = $Mainhand.rotation.z
 	
-	var input_velocity = input_dir.rotated(-rotation.y)
+	var input_velocity = input_dir.rotated(PI / 2 - rotation.y)
 	velocity.x = input_velocity.x * SPEED
 	velocity.z = input_velocity.y * SPEED
 	
 	velocity += knockback * Vector3(1, 0.08, 1)
 	knockback *= KNOCKBACK_DECAY
 	var animation_velocity = input_dir * SPEED
+	animation_velocity.y *= -1
 	if animation_velocity.length() > 1:
 		animation_velocity = animation_velocity.normalized()
 	$AnimationTree.set("parameters/running/blend_position", animation_velocity)

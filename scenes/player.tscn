@@ -128,3 +128,4 @@ parameters/trigger_jump/internal_active = false
 parameters/trigger_jump/request = 0
 
 [node name="CameraTransform" type="RemoteTransform3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
