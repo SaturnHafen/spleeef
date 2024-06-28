@@ -49,10 +49,14 @@ func switch_to_game_over():
 		arena = null
 	clear_players()
 	$PlayerGrid.visible = false
-	status.text = "Press X to play again"
-	var game_over = $GameOver
-	game_over.visible = true
-	game_over.clear()
+	status.text = "Press right trigger to play again"
+	$GameOver.visible = true
+	var game_over = $GameOver/Label
+	game_over.bbcode_enabled = true
+	game_over.text = "[center]"
+	if not team_won:
+		game_over.add_text("Game over\nNobody won")
+		return
 	game_over.add_text("Game over\nTeam ")
 	game_over.push_color(team_won.color)
 	game_over.add_text(team_won.name)
@@ -145,10 +149,13 @@ func get_teams_alive() -> Array[Team]:
 func player_died(player: Player):
 	player.team.num_players -= 1
 	var teams_alive = get_teams_alive()
-	assert(len(teams_alive) >= 1)
+	if len(teams_alive) > 1:
+		return
 	if len(teams_alive) == 1:
 		team_won = teams_alive[0]
-		switch_to_game_over()
+	else:
+		team_won = null
+	switch_to_game_over()
 
 var ready_timer: Timer = null
 
