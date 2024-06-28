@@ -129,6 +129,14 @@ func switch_to_team_selection():
 	state = State.TEAM_SELECTION
 	show_keys_for("Choose a team")
 
+func get_mesh_layer():
+	return 1 << (id + 1)
+
+func update_meshes():
+	var layer = get_mesh_layer()
+	for mesh in find_children("*", "VisualInstance3D", true, false):
+		(mesh as VisualInstance3D).layers = layer
+
 func show_character():
 	$AnimationTree.active = false
 	if character != null:
@@ -164,7 +172,10 @@ func process_ready():
 func switch_to_playing():
 	state = State.PLAYING
 	player_view.set_info("")
-	$CameraTransform.remote_path = player_view.get_camera().get_path()
+	var camera = player_view.get_camera()
+	camera.cull_mask = ~get_mesh_layer()
+	$CameraTransform.remote_path = camera.get_path()
+	update_meshes()
 
 func process_playing():
 	if Input.is_action_just_pressed("player_%d_action" % id):

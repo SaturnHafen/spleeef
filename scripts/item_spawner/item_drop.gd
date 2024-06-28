@@ -24,6 +24,7 @@ func give_item_to(body: Node3D, target: Node3D):
 	$Item.remove_child(current_item)
 	
 	target.add_child(current_item)
+	body.update_meshes()
 	current_item.player = body
 	
 	drop_collected.emit()
