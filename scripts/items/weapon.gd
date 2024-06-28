@@ -24,6 +24,11 @@ func display_ammo():
 		return "∞/∞"
 	return "%d/%d" % [ammo, variation.ammo]
 
+func display_cooldown():
+	if $Cooldown.is_stopped():
+		return ""
+	return "%.1f" % $Cooldown.time_left
+
 func _ready():
 	variation = variations.pick_random()
 	ammo = variation.ammo

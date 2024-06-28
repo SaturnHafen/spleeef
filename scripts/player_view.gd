@@ -31,6 +31,9 @@ func set_info(info: String):
 func set_team_name(team: String):
 	$Team.text = team
 
+func set_cooldown(team: String):
+	$Cooldown.text = team
+
 func set_weapon_name(weapon: String):
 	$Weapon.text = weapon
 
