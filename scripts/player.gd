@@ -191,14 +191,14 @@ func try_shoot():
 		weapon.try_shoot()
 
 func switch_hands():
-	var main = $Mainhand.get_child(0)
-	var off = $Offhand.get_child(0)
-	
-	$Offhand.remove_child(off)
-	$Mainhand.remove_child(main)
-	
-	$Offhand.add_child(main)
-	$Mainhand.add_child(off)
+	var main = $Mainhand.get_child(0) if $Mainhand.get_child_count() > 0 else null
+	var off = $Offhand.get_child(0) if $Offhand.get_child_count() > 0 else null
+	if off:
+		$Offhand.remove_child(off)
+		$Mainhand.add_child(off)
+	if main:
+		$Mainhand.remove_child(main)
+		$Offhand.add_child(main)
 
 func _physics_process(delta):
 	match state:
